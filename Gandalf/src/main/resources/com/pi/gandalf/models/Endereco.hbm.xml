@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/10/2017 20:49:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.pi.gandalf.models.Endereco" table="Endereco" schema="dbo" catalog="Gandalf" optimistic-lock="version">
+        <id name="idEndereco" type="int">
+            <column name="idEndereco" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cliente" class="com.pi.gandalf.models.Cliente" fetch="select">
+            <column name="idCliente" not-null="true" />
+        </many-to-one>
+        <property name="nomeEndereco" type="string">
+            <column name="nomeEndereco" length="50" not-null="true" />
+        </property>
+        <property name="logradouroEndereco" type="string">
+            <column name="logradouroEndereco" length="100" not-null="true" />
+        </property>
+        <property name="numeroEndereco" type="string">
+            <column name="numeroEndereco" length="10" not-null="true" />
+        </property>
+        <property name="cependereco" type="string">
+            <column name="CEPEndereco" length="9" not-null="true" />
+        </property>
+        <property name="complementoEndereco" type="string">
+            <column name="complementoEndereco" length="10" />
+        </property>
+        <property name="cidadeEndereco" type="string">
+            <column name="cidadeEndereco" length="50" not-null="true" />
+        </property>
+        <property name="paisEndereco" type="string">
+            <column name="paisEndereco" length="50" />
+        </property>
+        <property name="ufendereco" type="string">
+            <column name="UFEndereco" length="2" />
+        </property>
+        <set name="pedidos" table="Pedido" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idEndereco" />
+            </key>
+            <one-to-many class="com.pi.gandalf.models.Pedido" />
+        </set>
+    </class>
+</hibernate-mapping>
