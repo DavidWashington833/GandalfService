@@ -31,7 +31,7 @@ public class Produto  implements java.io.Serializable {
      private char ativoProduto;
      @Expose(serialize = true)
      private Integer qtdMinEstoque;
-     @Expose(serialize = true)
+//     @Expose(serialize = true);
      private byte[] imagem;
      @Expose(serialize = true)
      private Set itemPedidos = new HashSet(0);

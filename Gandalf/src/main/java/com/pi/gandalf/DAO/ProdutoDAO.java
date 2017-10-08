@@ -9,6 +9,7 @@ import com.pi.gandalf.HibernateUtil;
 import com.pi.gandalf.models.Produto;
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -28,5 +29,10 @@ public class ProdutoDAO {
     
     public Produto get(int id) {
         return (Produto) session.get(Produto.class, id);
+    }
+    
+    public List<Produto> getForCategoria(int id) {
+        return session.createCriteria(Produto.class)
+                .add(Restrictions.eq("categoria.id", id)).list();
     }
 }

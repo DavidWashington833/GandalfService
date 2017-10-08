@@ -73,4 +73,28 @@ public class ProdutoService {
         return response;
     }
     
+    @GET
+    @Path("/categoria/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getForCategoria(@PathParam("id") int id) {
+        Gson gson = Helpers.excludeFieldsWithoutExposeAnnotation();
+        List<Produto> produtos = null;
+        Response response = null;
+        
+        try {
+            produtos = new ProdutoDAO().getForCategoria(id);
+            String produtosJSON = gson.toJson(produtos);
+            response = Response.status(200).entity(produtosJSON).build();
+        }        
+        catch (Exception exception) {
+            exception.printStackTrace();
+            response = Response.status(500).entity(null).build();
+        }
+        
+        if (produtos == null) {
+            return Response.status(404).entity(produtos).build();
+        }
+        
+        return response;
+    }
 }
