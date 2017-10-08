@@ -35,4 +35,9 @@ public class ProdutoDAO {
         return session.createCriteria(Produto.class)
                 .add(Restrictions.eq("categoria.id", id)).list();
     }
+    
+    public List<Produto> like(String nomeProduto) {
+        return session.createCriteria(Produto.class)
+                .add(Restrictions.like("nomeProduto", "%" + nomeProduto + "%")).list();
+    }
 }

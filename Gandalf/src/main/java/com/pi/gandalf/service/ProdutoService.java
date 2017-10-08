@@ -97,4 +97,29 @@ public class ProdutoService {
         
         return response;
     }
+    
+    @GET
+    @Path("/like/{nomeProduto}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response search(@PathParam("nomeProduto") String nomeProduto) {
+        Gson gson = Helpers.excludeFieldsWithoutExposeAnnotation();
+        List<Produto> produtos = null;
+        Response response = null;
+        
+        try {
+            produtos = new ProdutoDAO().like(nomeProduto);
+            String produtosJSON = gson.toJson(produtos);
+            response = Response.status(200).entity(produtosJSON).build();
+        }        
+        catch (Exception exception) {
+            exception.printStackTrace();
+            response = Response.status(500).entity(null).build();
+        }
+        
+        if (produtos == null) {
+            return Response.status(404).entity(produtos).build();
+        }
+        
+        return response;
+    }
 }
