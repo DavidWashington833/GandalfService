@@ -6,6 +6,7 @@
 package com.pi.gandalf.DAO;
 
 import com.pi.gandalf.HibernateUtil;
+import com.pi.gandalf.models.Categoria;
 import com.pi.gandalf.models.Produto;
 import java.util.List;
 import org.hibernate.Session;
@@ -14,19 +15,14 @@ import org.hibernate.Session;
  *
  * @author Silva
  */
-public class ProdutoDAO {
-    
+public class CategoriaDAO {
     private Session session;
     
-    public ProdutoDAO() {
+    public CategoriaDAO() {
         session = new HibernateUtil().getSession();
     }
     
-    public List<Produto> get() {
-        return session.createCriteria(Produto.class).list();
-    }
-    
-    public Produto get(int id) {
-        return (Produto) session.get(Produto.class, id);
+    public List<Categoria> get() {
+        return session.createCriteria(Categoria.class).list();
     }
 }

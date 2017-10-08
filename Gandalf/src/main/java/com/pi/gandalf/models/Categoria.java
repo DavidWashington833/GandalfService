@@ -2,6 +2,7 @@ package com.pi.gandalf.models;
 // Generated 07/10/2017 20:49:51 by Hibernate Tools 4.3.1
 
 
+import com.google.gson.annotations.Expose;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,9 +12,13 @@ import java.util.Set;
 public class Categoria  implements java.io.Serializable {
 
 
+     @Expose(serialize = true)
      private int idCategoria;
+     @Expose(serialize = true)
      private String nomeCategoria;
+     @Expose(serialize = true)
      private String descCategoria;
+     @Expose(serialize = false)
      private Set produtos = new HashSet(0);
 
     public Categoria() {
