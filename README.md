@@ -11,6 +11,7 @@ Esse projeto foi desenvolvido no NetBeans, recomendamos usar essa IDE
 O que você precisa para desenvolver
 
 ```
+Java 7
 Maven
 Apache Tomcat 8.5
 ```
