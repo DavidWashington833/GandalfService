@@ -6,7 +6,7 @@
     <class name="com.pi.gandalf.models.Cliente" table="Cliente" schema="dbo" catalog="Gandalf" optimistic-lock="version">
         <id name="idCliente" type="int">
             <column name="idCliente" />
-            <generator class="assigned" />
+            <generator class="native" />
         </id>
         <property name="nomeCompletoCliente" type="string">
             <column name="nomeCompletoCliente" length="100" not-null="true" />
