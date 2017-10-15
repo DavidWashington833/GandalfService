@@ -37,7 +37,6 @@ public class ItemProdutoDTO {
         this.qtdMinEstoque = produto.getQtdMinEstoque();
         this.imagem = produto.getImagem();
         this.descProduto = produto.getDescProduto();
-        this.ativoProduto = produto.getAtivoProduto();
     }
 
 }
