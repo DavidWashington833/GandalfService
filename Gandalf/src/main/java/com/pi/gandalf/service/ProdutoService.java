@@ -5,10 +5,11 @@
  */
 package com.pi.gandalf.service;
 
-import com.google.gson.Gson;
 import com.pi.gandalf.DAO.ProdutoDAO;
-import com.pi.gandalf.Helpers;
+import com.pi.gandalf.DTO.ItemProdutoDTO;
+import com.pi.gandalf.DTO.ItemProdutoListaDTO;
 import com.pi.gandalf.models.Produto;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.GET;
@@ -27,14 +28,20 @@ public class ProdutoService {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response get() {
-        Gson gson = Helpers.excludeFieldsWithoutExposeAnnotation();
         List<Produto> produtos = null;
         Response response = null;
+        ArrayList<ItemProdutoListaDTO> itemProdutoListaDTO = new ArrayList<ItemProdutoListaDTO>(); 
         
         try {
             produtos = new ProdutoDAO().get();
-            String produtosJSON = gson.toJson(produtos);
-            response = Response.status(200).entity(produtosJSON).build();
+            
+            for(Produto item : produtos){
+                if (item.getAtivoProduto() == 49) {
+                    itemProdutoListaDTO.add(new ItemProdutoListaDTO(item));
+                }
+            }
+            
+            response = Response.status(200).entity(itemProdutoListaDTO).build();
         }        
         catch (Exception exception) {
             exception.printStackTrace();
@@ -42,7 +49,7 @@ public class ProdutoService {
         }
         
         if (produtos == null) {
-            return Response.status(404).entity(produtos).build();
+            response = Response.status(404).entity(produtos).build();
         }
         
         return response;
@@ -52,14 +59,14 @@ public class ProdutoService {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response get(@PathParam("id") int id) {
-        Gson gson = Helpers.excludeFieldsWithoutExposeAnnotation();
         Produto produto = null;
         Response response = null;
+        ItemProdutoDTO itemProdutoDTO = null;
         
         try {
             produto = new ProdutoDAO().get(id);
-            String produtoJSON = gson.toJson(produto);
-            response = Response.status(200).entity(produtoJSON).build();
+            itemProdutoDTO = new ItemProdutoDTO(produto);
+            response = Response.status(200).entity(itemProdutoDTO).build();
         }        
         catch (Exception exception) {
             exception.printStackTrace();
@@ -67,7 +74,7 @@ public class ProdutoService {
         }
         
         if (produto == null) {
-            return Response.status(404).entity(produto).build();
+            response = Response.status(404).entity(produto).build();
         }
         
         return response;
@@ -77,14 +84,20 @@ public class ProdutoService {
     @Path("/categoria/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getForCategoria(@PathParam("id") int id) {
-        Gson gson = Helpers.excludeFieldsWithoutExposeAnnotation();
         List<Produto> produtos = null;
         Response response = null;
+        ArrayList<ItemProdutoListaDTO> itemProdutoListaDTO = new ArrayList<ItemProdutoListaDTO>(); 
         
         try {
             produtos = new ProdutoDAO().getForCategoria(id);
-            String produtosJSON = gson.toJson(produtos);
-            response = Response.status(200).entity(produtosJSON).build();
+            
+            for(Produto item : produtos){
+                if (item.getAtivoProduto() == 49) {
+                    itemProdutoListaDTO.add(new ItemProdutoListaDTO(item));
+                }
+            }
+            
+            response = Response.status(200).entity(itemProdutoListaDTO).build();
         }        
         catch (Exception exception) {
             exception.printStackTrace();
@@ -92,7 +105,7 @@ public class ProdutoService {
         }
         
         if (produtos == null) {
-            return Response.status(404).entity(produtos).build();
+            response = Response.status(404).entity(produtos).build();
         }
         
         return response;
@@ -102,14 +115,20 @@ public class ProdutoService {
     @Path("/like/{nomeProduto}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response search(@PathParam("nomeProduto") String nomeProduto) {
-        Gson gson = Helpers.excludeFieldsWithoutExposeAnnotation();
         List<Produto> produtos = null;
         Response response = null;
+        ArrayList<ItemProdutoListaDTO> itemProdutoListaDTO = new ArrayList<ItemProdutoListaDTO>(); 
         
         try {
             produtos = new ProdutoDAO().like(nomeProduto);
-            String produtosJSON = gson.toJson(produtos);
-            response = Response.status(200).entity(produtosJSON).build();
+            
+            for(Produto item : produtos){
+                if (item.getAtivoProduto() == 49) {
+                    itemProdutoListaDTO.add(new ItemProdutoListaDTO(item));
+                }
+            }
+            
+            response = Response.status(200).entity(itemProdutoListaDTO).build();
         }        
         catch (Exception exception) {
             exception.printStackTrace();
@@ -117,7 +136,7 @@ public class ProdutoService {
         }
         
         if (produtos == null) {
-            return Response.status(404).entity(produtos).build();
+            response = Response.status(404).entity(produtos).build();
         }
         
         return response;

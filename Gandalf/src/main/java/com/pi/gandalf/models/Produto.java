@@ -13,27 +13,16 @@ import java.util.Set;
 public class Produto  implements java.io.Serializable {
 
 
-     @Expose(serialize = true)
      private int idProduto;
-     @Expose(serialize = false)
      private Categoria categoria;
-     @Expose(serialize = false)
      private Usuario usuario;
-     @Expose(serialize = true)
      private String nomeProduto;
-     @Expose(serialize = true)
      private String descProduto;
-     @Expose(serialize = true)
      private BigDecimal precProduto;
-     @Expose(serialize = true)
      private BigDecimal descontoPromocao;
-     @Expose(serialize = true)
-     private char ativoProduto;
-     @Expose(serialize = true)
+     private int ativoProduto;
      private Integer qtdMinEstoque;
-//     @Expose(serialize = true);
      private byte[] imagem;
-     @Expose(serialize = true)
      private Set itemPedidos = new HashSet(0);
 
     public Produto() {
@@ -110,11 +99,11 @@ public class Produto  implements java.io.Serializable {
     public void setDescontoPromocao(BigDecimal descontoPromocao) {
         this.descontoPromocao = descontoPromocao;
     }
-    public char getAtivoProduto() {
+    public int getAtivoProduto() {
         return this.ativoProduto;
     }
     
-    public void setAtivoProduto(char ativoProduto) {
+    public void setAtivoProduto(int ativoProduto) {
         this.ativoProduto = ativoProduto;
     }
     public Integer getQtdMinEstoque() {
