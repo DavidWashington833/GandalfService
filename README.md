@@ -35,7 +35,7 @@ Esse projeto foi desenvolvido no NetBeans, recomendamos usar essa IDE
   "descProduto": ""
 }
 ```
-#### (GET) http://localhost:8080/Gandalf/rest/produto/categoria/{id}
+#### (GET) http://gandalf.azurewebsites.net/Gandalf/rest/produto/categoria/{id}
 ##### Reponse
 ```javascript
 [
@@ -50,7 +50,7 @@ Esse projeto foi desenvolvido no NetBeans, recomendamos usar essa IDE
   ...
 ]
 ```
-#### (GET) http://localhost:8080/Gandalf/rest/produto/like/{text}
+#### (GET) http://gandalf.azurewebsites.net/Gandalf/rest/produto/like/{text}
 ##### Reponse
 ```javascript
 [
@@ -65,7 +65,7 @@ Esse projeto foi desenvolvido no NetBeans, recomendamos usar essa IDE
     ...
 ]
 ```
-#### (GET) http://localhost:8080/Gandalf/rest/cliente/authentic/{email}/{password}
+#### (GET) http://gandalf.azurewebsites.net/Gandalf/rest/cliente/authentic/{email}/{password}
 ##### Reponse
 ```javascript
 [
@@ -84,7 +84,7 @@ Esse projeto foi desenvolvido no NetBeans, recomendamos usar essa IDE
   ...
 ]
 ```
-#### (POST) http://localhost:8080/Gandalf/rest/cliente/
+#### (POST) http://gandalf.azurewebsites.net/Gandalf/rest/cliente/
 ##### Request
 ```javascript
 {
@@ -114,7 +114,7 @@ Esse projeto foi desenvolvido no NetBeans, recomendamos usar essa IDE
     "recebeNewsLetter": true
 }
 ```
-#### (GET) http://localhost:8080/Gandalf/rest/categoria/
+#### (GET) http://gandalf.azurewebsites.net/Gandalf/rest/categoria/
 ##### Reponse
 ```javascript
 [
