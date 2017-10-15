@@ -2,6 +2,7 @@ package com.pi.gandalf.models;
 // Generated 07/10/2017 20:49:51 by Hibernate Tools 4.3.1
 
 
+import com.google.gson.annotations.Expose;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,19 +12,30 @@ import java.util.Set;
  */
 public class Cliente  implements java.io.Serializable {
 
-
-     private int idCliente;
-     private String nomeCompletoCliente;
-     private String emailCliente;
-     private String senhaCliente;
-     private String cpfcliente;
-     private String celularCliente;
-     private String telComercialCliente;
-     private String telResidencialCliente;
-     private Date dtNascCliente;
-     private Boolean recebeNewsLetter;
-     private Set pedidos = new HashSet(0);
-     private Set enderecos = new HashSet(0);
+    @Expose(serialize = true)
+    private int idCliente;
+    @Expose(serialize = true)
+    private String nomeCompletoCliente;
+    @Expose(serialize = true)
+    private String emailCliente;
+    @Expose(serialize = true)
+    private String senhaCliente;
+    @Expose(serialize = true)
+    private String cpfcliente;
+    @Expose(serialize = true)
+    private String celularCliente;
+    @Expose(serialize = true)
+    private String telComercialCliente;
+    @Expose(serialize = true)
+    private String telResidencialCliente;
+    @Expose(serialize = true)
+    private Date dtNascCliente;
+    @Expose(serialize = true)
+    private Boolean recebeNewsLetter;
+    @Expose(serialize = false)
+    private Set pedidos = new HashSet(0);
+    @Expose(serialize = false)
+    private Set enderecos = new HashSet(0);
 
     public Cliente() {
     }

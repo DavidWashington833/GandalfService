@@ -7,6 +7,9 @@ package com.pi.gandalf;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  *
@@ -18,4 +21,17 @@ public class Helpers {
         builder.excludeFieldsWithoutExposeAnnotation();  
         return builder.create();  
     }   
+    
+    public static String sha1(String input) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        byte[] sourceBytes = input.getBytes("UTF-8");
+        input = new String(sourceBytes, "Windows-1252");
+        MessageDigest mDigest = MessageDigest.getInstance("SHA1");
+        byte[] result = mDigest.digest(input.getBytes());
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < result.length; i++) {
+            sb.append(Integer.toString((result[i] & 0xff) + 0x100, 16).substring(1));
+        }
+         
+        return sb.toString();
+    }
 }

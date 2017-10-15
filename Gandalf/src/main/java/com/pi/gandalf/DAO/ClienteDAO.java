@@ -7,9 +7,12 @@ package com.pi.gandalf.DAO;
 
 import com.pi.gandalf.HibernateUtil;
 import com.pi.gandalf.models.Cliente;
+import com.pi.gandalf.models.Produto;
+import java.util.ArrayList;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -30,6 +33,12 @@ public class ClienteDAO {
         }   
         catch (Exception e) {
         };
-        
+    }
+    
+    
+    public ArrayList<Cliente> get(String email, String password) {
+        return (ArrayList<Cliente>) session.createCriteria(Cliente.class)
+                .add(Restrictions.eq("emailCliente", email))
+                .add(Restrictions.eq("senhaCliente", password)).list();
     }
 }

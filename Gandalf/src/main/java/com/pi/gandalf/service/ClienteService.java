@@ -7,11 +7,13 @@ package com.pi.gandalf.service;
 
 import com.google.gson.Gson;
 import com.pi.gandalf.DAO.ClienteDAO;
-import com.pi.gandalf.DAO.ProdutoDAO;
+import com.pi.gandalf.DTO.ClienteDTO;
 import com.pi.gandalf.Helpers;
 import com.pi.gandalf.models.Cliente;
-import com.pi.gandalf.models.Produto;
-import java.util.List;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -28,36 +30,36 @@ import javax.ws.rs.core.Response;
 public class ClienteService {
      
     @POST
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/{teste}")
-    public Response post(@PathParam("teste") String teste) {
-//        Gson gson = Helpers.excludeFieldsWithoutExposeAnnotation();
-//        ClienteDAO clienteDAO = new ClienteDAO();
-//        Cliente cliente = null;
-//        Response response = null;
-//        
-//        cliente = new Cliente();
-//        cliente.setNomeCompletoCliente("Hebert");
-//        cliente.setEmailCliente("hebert@gmail.com");
-//        cliente.setSenhaCliente("123131");
-//        cliente.setCpfcliente("123123");
-//        
-//        try {
-//            clienteDAO.add(cliente);
-//            String clienteJSON = gson.toJson(cliente);
-//            response = Response.status(200).entity(clienteJSON).build();
-//        }        
-//        catch (Exception exception) {
-//            exception.printStackTrace();
-//            response = Response.status(500).entity(null).build();
-//        }
-//        
-//        if (cliente == null) {
-//            return Response.status(404).entity(cliente).build();
-//        }
-//        
-//        return response;
-        return Response.status(200).entity(teste).build();
+    public Response post(ClienteDTO clienteDTO) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        Gson gson = Helpers.excludeFieldsWithoutExposeAnnotation();
+        ClienteDAO clienteDAO = new ClienteDAO();
+        Response response = null;
+        Cliente cliente = clienteDTO.getCliente();
+        
+        try {
+            clienteDAO.add(cliente);
+            String clienteJSON = gson.toJson(cliente);
+            response = Response.status(200).entity(cliente).build();
+        }        
+        catch (Exception exception) {
+            exception.printStackTrace();
+            response = Response.status(500).entity(null).build();
+        }
+        
+        if (cliente == null) {
+            return Response.status(404).entity(cliente).build();
+        }
+        
+        return response;
     }
     
+    @GET
+    @Path("/authentic/{email}/{password}")
+    public Response authentic(@PathParam("email") String email, @PathParam("password") String password) {
+        Gson gson = Helpers.excludeFieldsWithoutExposeAnnotation();
+        ArrayList<Cliente> clientes = new ClienteDAO().get(email, password);
+        return Response.status(200).entity(gson.toJson(clientes)).build();
+    }
 }
