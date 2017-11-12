@@ -9,6 +9,7 @@ import com.pi.gandalf.HibernateUtil;
 import com.pi.gandalf.models.Cliente;
 import com.pi.gandalf.models.Produto;
 import java.util.ArrayList;
+import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -36,9 +37,15 @@ public class ClienteDAO {
     }
     
     
-    public ArrayList<Cliente> get(String email, String password) {
-        return (ArrayList<Cliente>) session.createCriteria(Cliente.class)
+    public Cliente get(String email, String password) {
+        Cliente cliente = null;
+        List<Cliente> clientes = session.createCriteria(Cliente.class)
                 .add(Restrictions.eq("emailCliente", email))
                 .add(Restrictions.eq("senhaCliente", password)).list();
+        if (clientes.size() > 0) {
+            cliente = clientes.get(0);
+        }
+        
+        return cliente;
     }
 }

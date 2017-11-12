@@ -59,7 +59,7 @@ public class ClienteService {
     @Path("/authentic/{email}/{password}")
     public Response authentic(@PathParam("email") String email, @PathParam("password") String password) {
         Gson gson = Helpers.excludeFieldsWithoutExposeAnnotation();
-        ArrayList<Cliente> clientes = new ClienteDAO().get(email, password);
-        return Response.status(200).entity(gson.toJson(clientes)).build();
+        Cliente cliente = new ClienteDAO().get(email, password);
+        return Response.status(200).entity(gson.toJson(cliente)).build();
     }
 }
