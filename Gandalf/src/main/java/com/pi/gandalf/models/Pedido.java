@@ -2,6 +2,7 @@ package com.pi.gandalf.models;
 // Generated 07/10/2017 20:49:51 by Hibernate Tools 4.3.1
 
 
+import com.google.gson.annotations.Expose;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,15 +12,16 @@ import java.util.Set;
  */
 public class Pedido  implements java.io.Serializable {
 
-
-     private int idPedido;
-     private Aplicacao aplicacao;
-     private Cliente cliente;
-     private Endereco endereco;
-     private StatusPedido statusPedido;
-     private TipoPagamento tipoPagamento;
-     private Date dataPedido;
-     private Set itemPedidos = new HashSet(0);
+    @Expose(serialize = true)
+    private int idPedido;
+    private Aplicacao aplicacao;
+    private Cliente cliente;
+    private Endereco endereco;
+    private StatusPedido statusPedido;
+    private TipoPagamento tipoPagamento;
+    @Expose(serialize = true)
+    private Date dataPedido;
+    private Set itemPedidos = new HashSet(0);
 
     public Pedido() {
     }

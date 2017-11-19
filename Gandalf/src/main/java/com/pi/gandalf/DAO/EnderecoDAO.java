@@ -24,11 +24,15 @@ public class EnderecoDAO {
         session = new HibernateUtil().getSession();
     }
     
-    public List<Endereco> get(int id) {
+    public List<Endereco> getForCliente(int id) {
         List<Endereco> endereco = new ArrayList<Endereco>();
         endereco = session.createCriteria(Endereco.class)
             .add(Restrictions.eq("cliente.id", id)).list();
         
         return endereco;
+    }
+    
+    public Endereco get(int id) {
+        return (Endereco) session.get(Endereco.class, id);
     }
 }

@@ -25,11 +25,34 @@ import javax.ws.rs.core.Response;
 @Path("/endereco")
 public class EnderecoService {
     @GET
+    @Path("/cliente/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getForCliente(@PathParam("id") int id) {
+        Gson gson = Helpers.excludeFieldsWithoutExposeAnnotation();
+        List<Endereco> endereco = new ArrayList<>();
+        Response response = null;
+        
+        try {
+            endereco = new EnderecoDAO().getForCliente(id);
+            response = Response.status(200).entity(gson.toJson(endereco)).build();
+        }        
+        catch (Exception exception) {
+            exception.printStackTrace();
+            response = Response.status(500).entity(null).build();
+        }
+        
+        if (endereco == null) {
+            response = Response.status(404).entity(endereco).build();
+        }
+        
+        return response;
+    }
+    @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response get(@PathParam("id") int id) {
         Gson gson = Helpers.excludeFieldsWithoutExposeAnnotation();
-        List<Endereco> endereco = new ArrayList<>();
+        Endereco endereco = null;
         Response response = null;
         
         try {
