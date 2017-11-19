@@ -2,6 +2,7 @@ package com.pi.gandalf.models;
 // Generated 07/10/2017 20:49:51 by Hibernate Tools 4.3.1
 
 
+import com.google.gson.annotations.Expose;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,18 +11,26 @@ import java.util.Set;
  */
 public class Endereco  implements java.io.Serializable {
 
-
-     private int idEndereco;
-     private Cliente cliente;
-     private String nomeEndereco;
-     private String logradouroEndereco;
-     private String numeroEndereco;
-     private String cependereco;
-     private String complementoEndereco;
-     private String cidadeEndereco;
-     private String paisEndereco;
-     private String ufendereco;
-     private Set pedidos = new HashSet(0);
+    @Expose(serialize = true)
+    private int idEndereco;
+    private Cliente cliente;
+    @Expose(serialize = true)
+    private String nomeEndereco;
+    @Expose(serialize = true)
+    private String logradouroEndereco;
+    @Expose(serialize = true)
+    private String numeroEndereco;
+    @Expose(serialize = true)
+    private String cependereco;
+    @Expose(serialize = true)
+    private String complementoEndereco;
+    @Expose(serialize = true)
+    private String cidadeEndereco;
+    @Expose(serialize = true)
+    private String paisEndereco;
+    @Expose(serialize = true)
+    private String ufendereco;
+    private Set pedidos = new HashSet(0);
 
     public Endereco() {
     }

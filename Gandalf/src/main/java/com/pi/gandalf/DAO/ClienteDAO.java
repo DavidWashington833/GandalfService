@@ -40,8 +40,8 @@ public class ClienteDAO {
     public Cliente get(String email, String password) {
         Cliente cliente = null;
         List<Cliente> clientes = session.createCriteria(Cliente.class)
-                .add(Restrictions.eq("emailCliente", email))
-                .add(Restrictions.eq("senhaCliente", password)).list();
+            .add(Restrictions.eq("emailCliente", email))
+            .add(Restrictions.eq("senhaCliente", password)).list();
         if (clientes.size() > 0) {
             cliente = clientes.get(0);
         }
