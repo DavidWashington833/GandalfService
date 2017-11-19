@@ -7,8 +7,6 @@ package com.pi.gandalf.DTO;
 
 import com.pi.gandalf.models.Cliente;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  *

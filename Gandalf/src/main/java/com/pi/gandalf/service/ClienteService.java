@@ -12,7 +12,6 @@ import com.pi.gandalf.Helpers;
 import com.pi.gandalf.models.Cliente;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -60,6 +59,14 @@ public class ClienteService {
     public Response authentic(@PathParam("email") String email, @PathParam("password") String password) {
         Gson gson = Helpers.excludeFieldsWithoutExposeAnnotation();
         Cliente cliente = new ClienteDAO().get(email, password);
+        return Response.status(200).entity(gson.toJson(cliente)).build();
+    }
+    
+    @GET
+    @Path("/{id}")
+    public Response get(@PathParam("id") int id) {
+        Gson gson = Helpers.excludeFieldsWithoutExposeAnnotation();
+        Cliente cliente = new ClienteDAO().get(id);
         return Response.status(200).entity(gson.toJson(cliente)).build();
     }
 }

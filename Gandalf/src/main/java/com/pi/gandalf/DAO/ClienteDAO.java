@@ -36,6 +36,9 @@ public class ClienteDAO {
         };
     }
     
+    public Cliente get(int id) {
+        return (Cliente) session.get(Cliente.class, id);
+    }
     
     public Cliente get(String email, String password) {
         Cliente cliente = null;
