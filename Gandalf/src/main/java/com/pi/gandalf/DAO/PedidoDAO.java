@@ -6,10 +6,11 @@
 package com.pi.gandalf.DAO;
 
 import com.pi.gandalf.HibernateUtil;
+import com.pi.gandalf.models.Cliente;
 import com.pi.gandalf.models.Pedido;
-import com.pi.gandalf.models.Produto;
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -21,6 +22,16 @@ public class PedidoDAO {
     
     public PedidoDAO() {
         session = new HibernateUtil().getSession();
+    }
+    
+    public void add(Pedido pedido) {
+        try {
+            Transaction tx = session.beginTransaction();
+            session.save(pedido);
+            tx.commit();
+        }   
+        catch (Exception e) {
+        };
     }
     
     public Pedido get(int id) {
