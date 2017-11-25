@@ -11,6 +11,7 @@ import com.pi.gandalf.models.Endereco;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -22,6 +23,16 @@ public class EnderecoDAO {
     
     public EnderecoDAO() {
         session = new HibernateUtil().getSession();
+    }
+    
+    public void add(Endereco endereco) {
+        try {
+            Transaction tx = session.beginTransaction();
+            session.save(endereco);
+            tx.commit();
+        }   
+        catch (Exception e) {
+        };
     }
     
     public List<Endereco> getForCliente(int id) {

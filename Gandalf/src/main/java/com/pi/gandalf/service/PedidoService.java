@@ -6,11 +6,8 @@
 package com.pi.gandalf.service;
 
 import com.google.gson.Gson;
-import com.pi.gandalf.DAO.ClienteDAO;
 import com.pi.gandalf.DAO.PedidoDAO;
-import com.pi.gandalf.DTO.ClienteDTO;
 import com.pi.gandalf.Helpers;
-import com.pi.gandalf.models.Cliente;
 import com.pi.gandalf.models.Pedido;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
