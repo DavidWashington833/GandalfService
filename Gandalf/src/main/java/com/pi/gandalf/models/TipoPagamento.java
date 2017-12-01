@@ -11,7 +11,7 @@ import java.util.Set;
 public class TipoPagamento  implements java.io.Serializable {
 
 
-     private byte idTipoPagto;
+     private int idTipoPagto;
      private String descTipoPagto;
      private Set pedidos = new HashSet(0);
 
@@ -29,11 +29,11 @@ public class TipoPagamento  implements java.io.Serializable {
        this.pedidos = pedidos;
     }
    
-    public byte getIdTipoPagto() {
+    public int getIdTipoPagto() {
         return this.idTipoPagto;
     }
     
-    public void setIdTipoPagto(byte idTipoPagto) {
+    public void setIdTipoPagto(int idTipoPagto) {
         this.idTipoPagto = idTipoPagto;
     }
     public String getDescTipoPagto() {

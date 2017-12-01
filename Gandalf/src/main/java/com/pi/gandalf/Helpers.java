@@ -7,6 +7,10 @@ package com.pi.gandalf;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -16,6 +20,44 @@ import java.security.NoSuchAlgorithmException;
  * @author Silva
  */
 public class Helpers {
+        
+    public static String getSubObjectJson(String json, String objectName) {
+        try {
+            JsonElement jelement = new JsonParser().parse(json);
+            JsonObject  jobject = jelement.getAsJsonObject();
+            jobject = jobject.getAsJsonObject(objectName);
+            String result = jobject.toString();
+            return result;
+        }
+        catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return "";
+    }
+    
+    public static String getSubArrayJson(String json, String arrayName) {
+        try {
+            JsonElement jelement = new JsonParser().parse(json);
+            JsonObject  jobject = jelement.getAsJsonObject();
+            JsonArray jarray = jobject.getAsJsonArray(arrayName);
+            String result = "[";
+            String t = "";
+            
+            for (int i = 0; i < jarray.size(); i++) {
+                t = i == 0 ? "" : ",";
+                result += t + jarray.get(i).getAsJsonObject().toString();
+            }
+            
+            result += "]";
+            
+            return result;
+        }
+        catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return "";
+    }
+    
     public static Gson excludeFieldsWithoutExposeAnnotation() {
         GsonBuilder builder = new GsonBuilder();  
         builder.excludeFieldsWithoutExposeAnnotation();  

@@ -6,7 +6,7 @@
     <class name="com.pi.gandalf.models.Pedido" table="Pedido" schema="dbo" catalog="Gandalf" optimistic-lock="version">
         <id name="idPedido" type="int">
             <column name="idPedido" />
-            <generator class="assigned" />
+            <generator class="native" />
         </id>
         <many-to-one name="aplicacao" class="com.pi.gandalf.models.Aplicacao" fetch="select">
             <column name="idAplicacao" not-null="true" />

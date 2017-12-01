@@ -10,6 +10,10 @@ import com.pi.gandalf.DAO.CategoriaDAO;
 import com.pi.gandalf.DAO.ProdutoDAO;
 import com.pi.gandalf.Helpers;
 import com.pi.gandalf.models.Categoria;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -24,6 +28,12 @@ import javax.ws.rs.core.Response;
 @Path("/categoria")
 public class CategoriaService {
     
+    private String driver;
+    private String url;
+    private String user;
+    private String pass;
+
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response get() {
