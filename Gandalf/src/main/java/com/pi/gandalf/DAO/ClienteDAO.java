@@ -5,6 +5,7 @@
  */
 package com.pi.gandalf.DAO;
 
+import com.pi.gandalf.DTO.ClienteDTO;
 import com.pi.gandalf.HibernateUtil;
 import com.pi.gandalf.models.Cliente;
 import com.pi.gandalf.models.Produto;
@@ -50,5 +51,24 @@ public class ClienteDAO {
         }
         
         return cliente;
+    }
+
+    public void put(Cliente cliente, ClienteDTO clienteDTO) {
+        try {
+            Transaction tx = session.beginTransaction();
+            
+            cliente.setNomeCompletoCliente(clienteDTO.getNomeCompletoCliente());
+            cliente.setEmailCliente(clienteDTO.getEmailCliente());
+            cliente.setSenhaCliente(clienteDTO.getSenhaCliente());
+            cliente.setCpfcliente(clienteDTO.getCpfcliente());
+            cliente.setCelularCliente(clienteDTO.getCelularCliente());
+            cliente.setTelComercialCliente(clienteDTO.getTelComercialCliente());
+            cliente.setTelResidencialCliente(clienteDTO.getTelComercialCliente());
+            
+            session.save(cliente);
+            tx.commit();
+        }   
+        catch (Exception e) {
+        };
     }
 }

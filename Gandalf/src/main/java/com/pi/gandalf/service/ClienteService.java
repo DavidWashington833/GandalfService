@@ -69,4 +69,16 @@ public class ClienteService {
         Cliente cliente = new ClienteDAO().get(id);
         return Response.status(200).entity(gson.toJson(cliente)).build();
     }
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/edit/{id}")
+    public Response edit(@PathParam("id") int id, ClienteDTO clienteDTO) {
+        Gson gson = Helpers.excludeFieldsWithoutExposeAnnotation();
+        ClienteDAO clienteDAO = new ClienteDAO();
+        Cliente cliente = clienteDAO.get(id);
+        clienteDAO.put(cliente, clienteDTO);
+        return Response.status(200).entity(gson.toJson(cliente)).build();
+    }
 }

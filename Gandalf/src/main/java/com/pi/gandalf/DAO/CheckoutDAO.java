@@ -57,7 +57,7 @@ public class CheckoutDAO {
                 "SistemasInternet123"
             );
             
-            String query = "INSERT INTO Pedido VALUES (" + checkoutDTO.getPedidoDTO().getIdCliente() + ", 1, '2017-11-28 20:44:00', " + checkoutDTO.getPedidoDTO().getIdTipoPagto() + ",  " + checkoutDTO.getPedidoDTO().getIdEndereco() + ", 2)";
+            String query = "INSERT INTO Pedido VALUES (" + checkoutDTO.getPedidoDTO().getIdCliente() + ", 1, '" + new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()) + "', " + checkoutDTO.getPedidoDTO().getIdTipoPagto() + ",  " + checkoutDTO.getPedidoDTO().getIdEndereco() + ", 2)";
             PreparedStatement prest;
             prest = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             prest.executeUpdate();

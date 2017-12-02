@@ -5,6 +5,9 @@
  */
 package com.pi.gandalf.DAO;
 
+import com.pi.gandalf.DTO.ClienteDTO;
+import com.pi.gandalf.DTO.Endereco2DTO;
+import com.pi.gandalf.DTO.EnderecoDTO;
 import com.pi.gandalf.HibernateUtil;
 import com.pi.gandalf.models.Cliente;
 import com.pi.gandalf.models.Endereco;
@@ -45,5 +48,25 @@ public class EnderecoDAO {
     
     public Endereco get(int id) {
         return (Endereco) session.get(Endereco.class, id);
+    }
+
+    public void put(Endereco endereco, Endereco2DTO enderecoDTO) {
+        try {
+            Transaction tx = session.beginTransaction();
+            
+            endereco.setNomeEndereco(enderecoDTO.nomeEndereco);
+            endereco.setLogradouroEndereco(enderecoDTO.logradouroEndereco);
+            endereco.setNumeroEndereco(enderecoDTO.numeroEndereco);
+            endereco.setCependereco(enderecoDTO.CEPEndereco);
+            endereco.setComplementoEndereco(enderecoDTO.complementoEndereco);
+            endereco.setCidadeEndereco(enderecoDTO.cidadeEndereco);
+            endereco.setPaisEndereco(enderecoDTO.paisEndereco);
+            endereco.setUfendereco(enderecoDTO.UFEndereco);
+            
+            session.save(endereco);
+            tx.commit();
+        }   
+        catch (Exception e) {
+        };
     }
 }

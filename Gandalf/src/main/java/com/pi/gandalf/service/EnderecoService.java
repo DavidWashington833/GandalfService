@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.pi.gandalf.DAO.ClienteDAO;
 import com.pi.gandalf.DAO.EnderecoDAO;
 import com.pi.gandalf.DTO.ClienteDTO;
+import com.pi.gandalf.DTO.Endereco2DTO;
 import com.pi.gandalf.DTO.EnderecoDTO;
 import com.pi.gandalf.Helpers;
 import com.pi.gandalf.models.Cliente;
@@ -103,5 +104,20 @@ public class EnderecoService {
         }
         
         return response;
+    }
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/edit")
+    public Response edit(Endereco2DTO endereco2DTO) {
+        Gson gson = Helpers.excludeFieldsWithoutExposeAnnotation();
+        EnderecoDAO enderecoDAO = new EnderecoDAO();
+        List<Endereco> endereco = enderecoDAO.getForCliente(endereco2DTO.idCliente);
+        Endereco endereco2 = (Endereco) endereco.toArray()[0];
+        if (endereco.size() > 0) {
+            enderecoDAO.put(endereco.get(1), endereco2DTO);
+        }
+        return Response.status(200).entity(endereco2DTO).build();
     }
 }
