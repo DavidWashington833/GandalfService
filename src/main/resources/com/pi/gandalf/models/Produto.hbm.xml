@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/10/2017 20:49:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.pi.gandalf.models.Produto" table="Produto" schema="dbo" catalog="Gandalf" optimistic-lock="version">
+        <id name="idProduto" type="int">
+            <column name="idProduto" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="categoria" class="com.pi.gandalf.models.Categoria" fetch="select">
+            <column name="idCategoria" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="com.pi.gandalf.models.Usuario" fetch="select">
+            <column name="idUsuario" />
+        </many-to-one>
+        <property name="nomeProduto" type="string">
+            <column name="nomeProduto" length="70" not-null="true" />
+        </property>
+        <property name="descProduto" type="string">
+            <column name="descProduto" length="500" />
+        </property>
+        <property name="precProduto" type="big_decimal">
+            <column name="precProduto" scale="4" not-null="true" />
+        </property>
+        <property name="descontoPromocao" type="big_decimal">
+            <column name="descontoPromocao" precision="18" />
+        </property>
+        <property name="ativoProduto" type="char">
+            <column name="ativoProduto" length="1" not-null="true" />
+        </property>
+        <property name="qtdMinEstoque" type="java.lang.Integer">
+            <column name="qtdMinEstoque" />
+        </property>
+        <property name="imagem" type="binary">
+            <column name="imagem" />
+        </property>
+        <set name="itemPedidos" table="ItemPedido" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idProduto" not-null="true" />
+            </key>
+            <one-to-many class="com.pi.gandalf.models.ItemPedido" />
+        </set>
+    </class>
+</hibernate-mapping>
