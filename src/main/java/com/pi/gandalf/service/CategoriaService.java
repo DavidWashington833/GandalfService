@@ -10,16 +10,19 @@ import com.pi.gandalf.DAO.CategoriaDAO;
 import com.pi.gandalf.DAO.ProdutoDAO;
 import com.pi.gandalf.Helpers;
 import com.pi.gandalf.models.Categoria;
+import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import java.util.Map;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import jdk.nashorn.internal.objects.NativeArray;
 
 /**
  *
@@ -48,13 +51,13 @@ public class CategoriaService {
         }        
         catch (Exception exception) {
             exception.printStackTrace();
-            response = Response.status(500).entity(null).build();
+            response = Response.status(500).entity(exception).build();
         }
         
         if (categorias == null) {
             return Response.status(404).entity(categorias).build();
         }
-        
+
         return response;
     }
 }

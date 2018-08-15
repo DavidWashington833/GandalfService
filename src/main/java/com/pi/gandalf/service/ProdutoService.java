@@ -51,7 +51,7 @@ public class ProdutoService {
         if (produtos == null) {
             response = Response.status(404).entity(produtos).build();
         }
-        
+
         return response;
     }
     

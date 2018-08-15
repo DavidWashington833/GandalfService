@@ -41,21 +41,5 @@ Contributor(s):
 -->
 <hibernate-configuration>
   <session-factory>
-    <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-    <property name="hibernate.connection.url">jdbc:sqlserver://gandalf-pi.database.windows.net:1433;databaseName=gandalf</property>
-    <property name="hibernate.connection.username">TSI</property>
-    <property name="hibernate.connection.password">SistemasInternet123</property>
-    <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
-    <mapping resource="com/pi/gandalf/models/Aplicacao.hbm.xml"/>
-    <mapping resource="com/pi/gandalf/models/Usuario.hbm.xml"/>
-    <mapping resource="com/pi/gandalf/models/Cliente.hbm.xml"/>
-    <mapping resource="com/pi/gandalf/models/Pedido.hbm.xml"/>
-    <mapping resource="com/pi/gandalf/models/Estoque.hbm.xml"/>
-    <mapping resource="com/pi/gandalf/models/ItemPedido.hbm.xml"/>
-    <mapping resource="com/pi/gandalf/models/Produto.hbm.xml"/>
-    <mapping resource="com/pi/gandalf/models/Categoria.hbm.xml"/>
-    <mapping resource="com/pi/gandalf/models/StatusPedido.hbm.xml"/>
-    <mapping resource="com/pi/gandalf/models/TipoPagamento.hbm.xml"/>
-    <mapping resource="com/pi/gandalf/models/Endereco.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
