@@ -1,137 +1,27 @@
-# Gandalf (WebService)
+# gandalf-api
 
-WebService do e commerce Gandalf para integração com o aplicativo [mobile](https://github.com/DavidWashington833/PI-4-AppMobile.git)
+API of the mobile app Gandalf Store.
 
 ## Getting Started
 
-Esse projeto foi desenvolvido no NetBeans, recomendamos usar essa IDE
+These instructions will get you a copy of the project up and running on your local machine.
 
-### Examples
-#### (GET) http://gandalf.azurewebsites.net/gandalf/rest/produto
-##### Reponse
-```javascript
-[
-    {
-        "idProduto": 0,
-        "nomeProduto": "",
-        "precProduto": 0.00,
-        "descontoPromocao": 0.00,
-        "qtdMinEstoque": 0,
-        "imagem": ""
-    }
-    ...
-]
-```
-#### (GET) http://gandalf.azurewebsites.net/gandalf/rest/produto/{id}
-##### Reponse
-```javascript
-{
-  "idProduto": 0,
-  "nomeProduto": "",
-  "precProduto": 0.00,
-  "descontoPromocao": 0.00,
-  "qtdMinEstoque": 0,
-  "imagem": "",
-  "descProduto": ""
-}
-```
-#### (GET) http://gandalf.azurewebsites.net/Gandalf/rest/produto/categoria/{id}
-##### Reponse
-```javascript
-[
-  {
-    "idProduto": 0,
-    "nomeProduto": "",
-    "precProduto": 0.00,
-    "descontoPromocao": 0.00,
-    "qtdMinEstoque": 0,
-    "imagem": ""
-  }
-  ...
-]
-```
-#### (GET) http://gandalf.azurewebsites.net/Gandalf/rest/produto/like/{text}
-##### Reponse
-```javascript
-[
-    {
-        "idProduto": 0,
-        "nomeProduto": "",
-        "precProduto": 0.00,
-        "descontoPromocao": 0.00,
-        "qtdMinEstoque": 0,
-        "imagem": ""
-    }
-    ...
-]
-```
-#### (GET) http://gandalf.azurewebsites.net/Gandalf/rest/cliente/authentic/{email}/{password}
-##### Reponse
-```javascript
-[
-  {
-    "idCliente": 0,
-    "nomeCompletoCliente": "",
-    "emailCliente": "",
-    "senhaCliente": "",
-    "cpfcliente": "",
-    "celularCliente": "",
-    "telComercialCliente": "",
-    "telResidencialCliente": "",
-    "dtNascCliente": "",
-    "recebeNewsLetter": true
-  }
-  ...
-]
-```
-#### (POST) http://gandalf.azurewebsites.net/Gandalf/rest/cliente/
-##### Request
-```javascript
-{
-    "nomeCompletoCliente": "",
-    "emailCliente": "",
-    "senhaCliente": "",
-    "cpfcliente": "",
-    "celularCliente": "",
-    "telComercialCliente": "",
-    "telResidencialCliente": "",
-    "dtNascCliente": "",
-    "recebeNewsLetter": true
-}
-```
-##### Reponse
-```javascript
-{
-    "idCliente": 0,
-    "nomeCompletoCliente": "",
-    "emailCliente": "",
-    "senhaCliente": "",
-    "cpfcliente": "",
-    "celularCliente": "",
-    "telComercialCliente": "",
-    "telResidencialCliente": "",
-    "dtNascCliente": "",
-    "recebeNewsLetter": true
-}
-```
-#### (GET) http://gandalf.azurewebsites.net/Gandalf/rest/categoria/
-##### Reponse
-```javascript
-[
-    { 
-        "idCategoria": 0, 
-        "nomeCategoria": "" 
-    }
-  ...
-]
-```
+## Environment
+
+There are some environment variables that must be set before using this tool.
+
+**DATABASE_USER**, **DATABASE_PASSWORD**, **DATABASE_URL** and **DATABASE_NAME**
 
 ### Prerequisites
 
-O que você precisa para desenvolver
+You need to have [Java 8](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html), [Tomcat 8](https://tomcat.apache.org/download-80.cgi) and SQL Server local or in cloud.
 
-```
-Java 7
-Maven
-Apache Tomcat 8.5
-```
+Create data base and execute this [script](script.sql).
+
+### Running the server
+
+This project was not developed in [NetBeans](https://netbeans.org/downloads/).
+
+## Authors
+
+* **David Washington** - [davidwashington833](https://github.com/DavidWashington833)
