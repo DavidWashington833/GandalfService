@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/10/2017 20:49:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="Gandalf" name="com.gandalf.models.Pedido" optimistic-lock="version" schema="dbo" table="Pedido">
+    <id name="idPedido" type="int">
+      <column name="idPedido"/>
+      <generator class="native"/>
+    </id>
+    <many-to-one class="com.gandalf.models.Aplicacao" fetch="select" name="aplicacao">
+      <column name="idAplicacao" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.gandalf.models.Cliente" fetch="select" name="cliente">
+      <column name="idCliente" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.gandalf.models.Endereco" fetch="select" name="endereco">
+      <column name="idEndereco"/>
+    </many-to-one>
+    <many-to-one class="com.gandalf.models.StatusPedido" fetch="select" name="statusPedido">
+      <column name="idStatus" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.gandalf.models.TipoPagamento" fetch="select" name="tipoPagamento">
+      <column name="idTipoPagto" not-null="true"/>
+    </many-to-one>
+    <property name="dataPedido" type="timestamp">
+      <column length="16" name="dataPedido" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="itemPedidos" table="ItemPedido">
+      <key>
+        <column name="idPedido" not-null="true"/>
+      </key>
+      <one-to-many class="com.gandalf.models.ItemPedido"/>
+    </set>
+  </class>
+</hibernate-mapping>
