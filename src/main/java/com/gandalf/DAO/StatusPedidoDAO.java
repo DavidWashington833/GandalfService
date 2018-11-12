@@ -12,7 +12,7 @@ import org.hibernate.Session;
 
 /**
  *
- * @author Silva
+ * @author David Washington
  */
 public class StatusPedidoDAO {
     private Session session;

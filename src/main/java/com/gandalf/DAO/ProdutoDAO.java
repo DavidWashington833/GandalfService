@@ -13,7 +13,7 @@ import org.hibernate.criterion.Restrictions;
 
 /**
  *
- * @author Silva
+ * @author David Washington
  */
 public class ProdutoDAO {
     

@@ -20,7 +20,7 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @author Silva
+ * @author David Washington
  */
 @Path("/produto")
 public class ProdutoService {

@@ -17,7 +17,7 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  *
- * @author Silva
+ * @author David Washington
  */
 public class Helpers {
         

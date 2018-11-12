@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 
 /**
  *
- * @author Silva
+ * @author David Washington
  */
 public class ItemPedidoDTO implements Serializable {
     public int idProduto;

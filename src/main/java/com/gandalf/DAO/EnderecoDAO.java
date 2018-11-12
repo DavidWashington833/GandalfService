@@ -19,7 +19,7 @@ import org.hibernate.criterion.Restrictions;
 
 /**
  *
- * @author Silva
+ * @author David Washington
  */
 public class EnderecoDAO {
     private Session session;

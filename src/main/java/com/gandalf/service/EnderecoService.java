@@ -29,7 +29,7 @@ import javax.ws.rs.core.Response;
 
 /**
  *
- * @author Silva
+ * @author David Washington
  */
 @Path("/endereco")
 public class EnderecoService {

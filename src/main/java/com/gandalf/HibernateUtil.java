@@ -15,7 +15,7 @@ import org.hibernate.SessionFactory;
  * Hibernate Utility class with a convenient method to get Session Factory
  * object.
  *
- * @author Silva
+ * @author David Washington
  */
 public class HibernateUtil {
 
@@ -32,8 +32,6 @@ public class HibernateUtil {
     
     static {
         try {
-            // Create the SessionFactory from standard (hibernate.cfg.xml) 
-            // config file.
             sessionFactory = new AnnotationConfiguration().configure()
                 .addClass(com.gandalf.models.Aplicacao.class)
                 .addClass(com.gandalf.models.Categoria.class)
@@ -53,7 +51,6 @@ public class HibernateUtil {
                 .setProperty("hibernate.query.factory_class", "org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory")
                 .buildSessionFactory();
         } catch (Throwable ex) {
-            // Log the exception. 
             System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }

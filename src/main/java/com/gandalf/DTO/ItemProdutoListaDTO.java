@@ -15,7 +15,7 @@ import java.util.Set;
 
 /**
  *
- * @author Silva
+ * @author David Washington
  */
 public class ItemProdutoListaDTO {
 

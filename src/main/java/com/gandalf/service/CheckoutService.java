@@ -33,7 +33,7 @@ import javax.ws.rs.core.Response;
 
 /**
  *
- * @author Silva
+ * @author David Washington
  */
 @Path("/checkout")
 public class CheckoutService {

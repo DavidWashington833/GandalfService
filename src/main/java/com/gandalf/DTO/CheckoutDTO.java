@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Silva
+ * @author David Washington
  */
 public class CheckoutDTO implements Serializable {
     public PedidoDTO pedidoDTO;

@@ -11,7 +11,7 @@ import com.gandalf.models.Endereco;
 
 /**
  *
- * @author Silva
+ * @author David Washington
  */
 public class EnderecoDTO {    
     public int idCliente;

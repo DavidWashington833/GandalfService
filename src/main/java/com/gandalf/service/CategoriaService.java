@@ -26,7 +26,7 @@ import jdk.nashorn.internal.objects.NativeArray;
 
 /**
  *
- * @author Silva
+ * @author David Washington
  */
 @Path("/categoria")
 public class CategoriaService {

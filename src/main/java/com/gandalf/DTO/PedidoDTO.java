@@ -17,7 +17,7 @@ import java.util.Date;
 
 /**
  *
- * @author Silva
+ * @author David Washington
  */
 public class PedidoDTO implements Serializable {
     public int idCliente;

@@ -7,7 +7,7 @@ package com.gandalf.DTO;
 
 /**
  *
- * @author Silva
+ * @author David Washington
  */
 public class Endereco2DTO {
     

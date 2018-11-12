@@ -32,7 +32,7 @@ import org.hibernate.Transaction;
 
 /**
  *
- * @author Silva
+ * @author David Washington
  */
 public class CheckoutDAO {
     private Session session;
