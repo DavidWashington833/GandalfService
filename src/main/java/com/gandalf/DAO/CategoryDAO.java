@@ -15,10 +15,10 @@ import org.hibernate.Session;
  *
  * @author David Washington
  */
-public class CategoriaDAO {
+public class CategoryDAO {
     private Session session;
     
-    public CategoriaDAO() {
+    public CategoryDAO() {
         session = new HibernateUtil().getSession();
     }
     

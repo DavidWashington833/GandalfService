@@ -36,9 +36,9 @@ public class ProductService {
                 return Response.status(404).entity(products).build();
             }
             
-            for(Produto item : products){
-                if (item.getAtivoProduto() == 49) {
-                    productsDTO.add(new ProductDTO(item));
+            for(Produto product : products){
+                if (product.getAtivoProduto() == 49) {
+                    productsDTO.add(new ProductDTO(product));
                 }
             }
 
@@ -83,9 +83,9 @@ public class ProductService {
                 return Response.status(404).entity(products).build();
             }
             
-            for(Produto item : products){
-                if (item.getAtivoProduto() == 49) {
-                    productsDTO.add(new ProductDTO(item));
+            for(Produto product : products){
+                if (product.getAtivoProduto() == 49) {
+                    productsDTO.add(new ProductDTO(product));
                 }
             }
 
@@ -110,9 +110,9 @@ public class ProductService {
                 return Response.status(404).entity(products).build();
             }
             
-            for(Produto item : products){
-                if (item.getAtivoProduto() == 49) {
-                    productsDTO.add(new ProductDTO(item));
+            for(Produto product : products){
+                if (product.getAtivoProduto() == 49) {
+                    productsDTO.add(new ProductDTO(product));
                 }
             }
 

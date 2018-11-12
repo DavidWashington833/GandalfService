@@ -6,15 +6,19 @@
 package com.gandalf.service;
 
 import com.google.gson.Gson;
-import com.gandalf.DAO.CategoriaDAO;
+import com.gandalf.DAO.CategoryDAO;
 import com.gandalf.DAO.ProductDAO;
+import com.gandalf.DTO.CategoryDTO;
+import com.gandalf.DTO.ProductDTO;
 import com.gandalf.Helpers;
 import com.gandalf.models.Categoria;
+import com.gandalf.models.Produto;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.GET;
@@ -28,36 +32,30 @@ import jdk.nashorn.internal.objects.NativeArray;
  *
  * @author David Washington
  */
-@Path("/categoria")
-public class CategoriaService {
+@Path("/category")
+public class CategoryService {
     
-    private String driver;
-    private String url;
-    private String user;
-    private String pass;
-
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response get() {
-        Gson gson = Helpers.excludeFieldsWithoutExposeAnnotation();
-        List<Categoria> categorias = null;
-        Response response = null;
+        ArrayList<CategoryDTO> categorysDTO = new ArrayList<CategoryDTO>();
         
         try {
-            categorias = new CategoriaDAO().get();
-            String categoriasJSON = gson.toJson(categorias);
-            response = Response.status(200).entity(categoriasJSON).build();
+            List<Categoria> categorys = new CategoryDAO().get();
+        
+            if (categorys == null) {
+                return Response.status(404).entity(categorys).build();
+            }
+            
+            for(Categoria category : categorys){
+                categorysDTO.add(new CategoryDTO(category));
+            }
+            
+            return Response.status(200).entity(categorysDTO).build();
         }        
         catch (Exception exception) {
             exception.printStackTrace();
-            response = Response.status(500).entity(exception).build();
+            return Response.status(500).entity(exception).build();
         }
-        
-        if (categorias == null) {
-            return Response.status(404).entity(categorias).build();
-        }
-
-        return response;
     }
 }
