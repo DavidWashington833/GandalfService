@@ -25,9 +25,9 @@ public class HibernateUtil {
     public static Session getSession() {
         return getSessionFactory().openSession();
     }
-
-    public static void setSession(Session session) {
-        HibernateUtil.session = session;
+    
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
     }
     
     static {
@@ -51,12 +51,7 @@ public class HibernateUtil {
                 .setProperty("hibernate.query.factory_class", "org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory")
                 .buildSessionFactory();
         } catch (Throwable ex) {
-            System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
-    }
-    
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
     }
 }

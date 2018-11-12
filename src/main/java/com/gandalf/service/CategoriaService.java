@@ -7,7 +7,7 @@ package com.gandalf.service;
 
 import com.google.gson.Gson;
 import com.gandalf.DAO.CategoriaDAO;
-import com.gandalf.DAO.ProdutoDAO;
+import com.gandalf.DAO.ProductDAO;
 import com.gandalf.Helpers;
 import com.gandalf.models.Categoria;
 import java.nio.charset.StandardCharsets;

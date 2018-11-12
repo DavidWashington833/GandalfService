@@ -6,7 +6,7 @@
 package com.gandalf.DTO;
 
 import com.gandalf.DAO.PedidoDAO;
-import com.gandalf.DAO.ProdutoDAO;
+import com.gandalf.DAO.ProductDAO;
 import com.gandalf.models.ItemPedido;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -38,7 +38,7 @@ public class ItemPedidoDTO implements Serializable {
     public ItemPedido getItemPedido() {
         ItemPedido itemPedido = new ItemPedido();
         
-        itemPedido.setProduto(new ProdutoDAO().get(idProduto));
+        itemPedido.setProduto(new ProductDAO().get(idProduto));
         itemPedido.setQtdProduto((short)qtdProduto);
         itemPedido.setPrecoVendaItem(precoVendaItem);
         

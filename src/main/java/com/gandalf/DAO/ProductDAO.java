@@ -15,11 +15,11 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author David Washington
  */
-public class ProdutoDAO {
+public class ProductDAO {
     
     private Session session;
     
-    public ProdutoDAO() {
+    public ProductDAO() {
         session = new HibernateUtil().getSession();
     }
     

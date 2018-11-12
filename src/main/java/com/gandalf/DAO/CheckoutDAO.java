@@ -85,7 +85,7 @@ public class CheckoutDAO {
 
             for(int i = 0; i < item.length; i++) {
                 t = i == 0 ? "" : ",";
-                query2 += t + "(" + item[i].getIdProduto() + ", " + idPedido + ", " + item[i].getQtdProduto() + ", " + (new ProdutoDAO().get(item[i].getIdProduto()).getPrecProduto()) + ")";
+                query2 += t + "(" + item[i].getIdProduto() + ", " + idPedido + ", " + item[i].getQtdProduto() + ", " + (new ProductDAO().get(item[i].getIdProduto()).getPrecProduto()) + ")";
             }
 
             prest2 = conn2.prepareStatement(query2, Statement.RETURN_GENERATED_KEYS);
