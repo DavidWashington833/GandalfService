@@ -30,7 +30,8 @@ public class ProductService {
         ArrayList<ProductDTO> productsDTO = new ArrayList<ProductDTO>(); 
         
         try {
-            List<Produto> products = new ProductDAO().get();
+            ProductDAO productDAO = new ProductDAO();
+            List<Produto> products = productDAO.get();
      
             if (products == null) {
                 return Response.status(404).entity(products).build();
@@ -38,7 +39,7 @@ public class ProductService {
             
             for(Produto product : products){
                 if (product.getAtivoProduto() == 49) {
-                    productsDTO.add(new ProductDTO(product));
+                    productsDTO.add(productDAO.getProductDTO(product));
                 }
             }
 
@@ -55,13 +56,14 @@ public class ProductService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response get(@PathParam("id") int id) {
         try {
-            Produto product = new ProductDAO().get(id);
+            ProductDAO productDAO = new ProductDAO();
+            Produto product = productDAO.get(id);
         
             if (product == null) {
                 return Response.status(404).entity(product).build();
             }
             
-            ProductDTO productDTO = new ProductDTO(product);
+            ProductDTO productDTO = productDAO.getProductDTO(product);
             return Response.status(200).entity(productDTO).build();
         }        
         catch (Exception exception) {
@@ -77,7 +79,8 @@ public class ProductService {
         ArrayList<ProductDTO> productsDTO = new ArrayList<ProductDTO>(); 
         
         try {
-            List<Produto> products = new ProductDAO().getForCategoria(id);
+            ProductDAO productDAO = new ProductDAO();
+            List<Produto> products = productDAO.getForCategoria(id);
      
             if (products == null) {
                 return Response.status(404).entity(products).build();
@@ -85,7 +88,7 @@ public class ProductService {
             
             for(Produto product : products){
                 if (product.getAtivoProduto() == 49) {
-                    productsDTO.add(new ProductDTO(product));
+                    productsDTO.add(productDAO.getProductDTO(product));
                 }
             }
 
@@ -100,11 +103,12 @@ public class ProductService {
     @GET
     @Path("/search/{nomeProduto}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response search(@PathParam("nomeProduto") String nomeProduto) {
+    public Response search(@PathParam("nameProduct") String nameProduct) {
         ArrayList<ProductDTO> productsDTO = new ArrayList<ProductDTO>(); 
         
         try {
-            List<Produto> products = new ProductDAO().like(nomeProduto);
+            ProductDAO productDAO = new ProductDAO();
+            List<Produto> products = productDAO.like(nameProduct);
      
             if (products == null) {
                 return Response.status(404).entity(products).build();
@@ -112,7 +116,7 @@ public class ProductService {
             
             for(Produto product : products){
                 if (product.getAtivoProduto() == 49) {
-                    productsDTO.add(new ProductDTO(product));
+                    productsDTO.add(productDAO.getProductDTO(product));
                 }
             }
 

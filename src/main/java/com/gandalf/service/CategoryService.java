@@ -41,14 +41,15 @@ public class CategoryService {
         ArrayList<CategoryDTO> categorysDTO = new ArrayList<CategoryDTO>();
         
         try {
-            List<Categoria> categorys = new CategoryDAO().get();
+            CategoryDAO categoryDAO = new CategoryDAO();
+            List<Categoria> categorys = categoryDAO.get();
         
             if (categorys == null) {
                 return Response.status(404).entity(categorys).build();
             }
             
             for(Categoria category : categorys){
-                categorysDTO.add(new CategoryDTO(category));
+                categorysDTO.add(categoryDAO.getCategoryDTO(category));
             }
             
             return Response.status(200).entity(categorysDTO).build();

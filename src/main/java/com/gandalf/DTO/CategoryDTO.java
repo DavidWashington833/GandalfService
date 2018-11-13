@@ -21,13 +21,5 @@ public class CategoryDTO {
     public int idCategoria;
     public String nomeCategoria;
     public String descCategoria;
-
-    public CategoryDTO() {}
-   
-    public CategoryDTO(Categoria category) {
-        this.idCategoria = category.getIdCategoria();
-        this.nomeCategoria = category.getNomeCategoria();
-        this.descCategoria = category.getDescCategoria();
-    }
     
 }
