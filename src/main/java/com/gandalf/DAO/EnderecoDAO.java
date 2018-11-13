@@ -5,7 +5,7 @@
  */
 package com.gandalf.DAO;
 
-import com.gandalf.DTO.ClienteDTO;
+import com.gandalf.DTO.ClientDTO;
 import com.gandalf.DTO.Endereco2DTO;
 import com.gandalf.DTO.EnderecoDTO;
 import com.gandalf.HibernateUtil;

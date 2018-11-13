@@ -5,7 +5,7 @@
  */
 package com.gandalf.DTO;
 
-import com.gandalf.DAO.ClienteDAO;
+import com.gandalf.DAO.ClientDAO;
 import com.gandalf.DAO.EnderecoDAO;
 import com.gandalf.DAO.TipoPagamentoDAO;
 import com.gandalf.DAO.StatusPedidoDAO;
@@ -47,7 +47,7 @@ public class PedidoDTO implements Serializable {
         Aplicacao aplicacao = new Aplicacao();
         aplicacao.setIdAplicacao((byte)2);
         
-        pedido.setCliente(new ClienteDAO().get(idCliente));
+        pedido.setCliente(new ClientDAO().get(idCliente));
         pedido.setEndereco(new EnderecoDAO().get(idEndereco));
         pedido.setAplicacao(aplicacao);
         

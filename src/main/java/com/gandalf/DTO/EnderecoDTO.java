@@ -5,7 +5,7 @@
  */
 package com.gandalf.DTO;
 
-import com.gandalf.DAO.ClienteDAO;
+import com.gandalf.DAO.ClientDAO;
 import com.gandalf.models.Cliente;
 import com.gandalf.models.Endereco;
 
@@ -40,7 +40,7 @@ public class EnderecoDTO {
     
     public Endereco getEndereco() {
         Endereco endereco = new Endereco();
-        endereco.setCliente(new ClienteDAO().get(this.idCliente));
+        endereco.setCliente(new ClientDAO().get(this.idCliente));
         endereco.setNomeEndereco(this.nomeEndereco);
         endereco.setLogradouroEndereco(this.logradouroEndereco);
         endereco.setNumeroEndereco(this.numeroEndereco);

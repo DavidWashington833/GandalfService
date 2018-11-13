@@ -6,9 +6,9 @@
 package com.gandalf.service;
 
 import com.google.gson.Gson;
-import com.gandalf.DAO.ClienteDAO;
+import com.gandalf.DAO.ClientDAO;
 import com.gandalf.DAO.EnderecoDAO;
-import com.gandalf.DTO.ClienteDTO;
+import com.gandalf.DTO.ClientDTO;
 import com.gandalf.DTO.Endereco2DTO;
 import com.gandalf.DTO.EnderecoDTO;
 import com.gandalf.Helpers;

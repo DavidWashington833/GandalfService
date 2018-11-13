@@ -46,7 +46,7 @@ public class ProductService {
         }        
         catch (Exception exception) {
             exception.printStackTrace();
-            return Response.status(500).entity(null).build();
+            return Response.status(500).build();
         }
     }
     
@@ -66,7 +66,7 @@ public class ProductService {
         }        
         catch (Exception exception) {
             exception.printStackTrace();
-            return Response.status(500).entity(null).build();
+            return Response.status(500).build();
         }
     }
     
@@ -93,7 +93,7 @@ public class ProductService {
         }        
         catch (Exception exception) {
             exception.printStackTrace();
-            return Response.status(500).entity(null).build();
+            return Response.status(500).build();
         }
     }
     
@@ -120,7 +120,7 @@ public class ProductService {
         }        
         catch (Exception exception) {
             exception.printStackTrace();
-            return Response.status(500).entity(null).build();
+            return Response.status(500).build();
         }
     }
 }

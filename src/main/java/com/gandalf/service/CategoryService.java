@@ -55,7 +55,7 @@ public class CategoryService {
         }        
         catch (Exception exception) {
             exception.printStackTrace();
-            return Response.status(500).entity(exception).build();
+            return Response.status(500).build();
         }
     }
 }

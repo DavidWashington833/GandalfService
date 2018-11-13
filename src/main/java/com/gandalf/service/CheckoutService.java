@@ -11,7 +11,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.gandalf.DAO.CheckoutDAO;
-import com.gandalf.DAO.ClienteDAO;
+import com.gandalf.DAO.ClientDAO;
 import com.gandalf.DTO.CheckoutDTO;
 import com.gandalf.DTO.PedidoDTO;
 import com.gandalf.DTO.ItemPedidoDTO;
