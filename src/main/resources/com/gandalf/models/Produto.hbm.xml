@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/10/2017 20:49:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="Gandalf" name="com.gandalf.models.Produto" optimistic-lock="version" schema="dbo" table="Produto">
+    <id name="idProduto" type="int">
+      <column name="idProduto"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.gandalf.models.Categoria" fetch="select" name="categoria">
+      <column name="idCategoria" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.gandalf.models.Usuario" fetch="select" name="usuario">
+      <column name="idUsuario"/>
+    </many-to-one>
+    <property name="nomeProduto" type="string">
+      <column length="70" name="nomeProduto" not-null="true"/>
+    </property>
+    <property name="descProduto" type="string">
+      <column length="500" name="descProduto"/>
+    </property>
+    <property name="precProduto" type="big_decimal">
+      <column name="precProduto" not-null="true" scale="4"/>
+    </property>
+    <property name="descontoPromocao" type="big_decimal">
+      <column name="descontoPromocao" precision="18"/>
+    </property>
+    <property name="ativoProduto" type="char">
+      <column length="1" name="ativoProduto" not-null="true"/>
+    </property>
+    <property name="qtdMinEstoque" type="java.lang.Integer">
+      <column name="qtdMinEstoque"/>
+    </property>
+    <property name="imagem" type="binary">
+      <column name="imagem"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="itemPedidos" table="ItemPedido">
+      <key>
+        <column name="idProduto" not-null="true"/>
+      </key>
+      <one-to-many class="com.gandalf.models.ItemPedido"/>
+    </set>
+  </class>
+</hibernate-mapping>

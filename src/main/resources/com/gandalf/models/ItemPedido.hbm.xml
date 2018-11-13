@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/10/2017 20:49:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="Gandalf" name="com.gandalf.models.ItemPedido" optimistic-lock="version" schema="dbo" table="ItemPedido">
+    <composite-id class="com.gandalf.models.ItemPedidoId" name="id">
+      <key-property name="idProduto" type="int">
+        <column name="idProduto"/>
+      </key-property>
+      <key-property name="idPedido" type="int">
+        <column name="idPedido"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="com.gandalf.models.Pedido" fetch="select" insert="false" name="pedido" update="false">
+      <column name="idPedido" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.gandalf.models.Produto" fetch="select" insert="false" name="produto" update="false">
+      <column name="idProduto" not-null="true"/>
+    </many-to-one>
+    <property name="qtdProduto" type="short">
+      <column name="qtdProduto" not-null="true"/>
+    </property>
+    <property name="precoVendaItem" type="big_decimal">
+      <column name="precoVendaItem" not-null="true" scale="4"/>
+    </property>
+  </class>
+</hibernate-mapping>
