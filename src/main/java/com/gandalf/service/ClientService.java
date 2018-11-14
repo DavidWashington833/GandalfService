@@ -106,7 +106,7 @@ public class ClientService {
     @PUT
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response edit(@PathParam("id") int id, ClientDTO clientDTO) {
+    public Response put(@PathParam("id") int id, ClientDTO clientDTO) {
         try {
             ClientDAO clientDAO = new ClientDAO();
             Cliente client = clientDAO.get(id);
@@ -129,7 +129,6 @@ public class ClientService {
             }
                 
             clientDAO.put(client, clientDTO);
-            ClientDTO clientDTOChanged = clientDAO.getClientDTO(clientDAO.get(id));
             return Response.status(200).build();
         }  
         catch (Exception exception) {

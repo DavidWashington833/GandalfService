@@ -7,7 +7,7 @@ package com.gandalf.DAO;
 
 import com.gandalf.DTO.ClientDTO;
 import com.gandalf.DTO.Endereco2DTO;
-import com.gandalf.DTO.EnderecoDTO;
+import com.gandalf.DTO.AddressDTO;
 import com.gandalf.HibernateUtil;
 import com.gandalf.models.Cliente;
 import com.gandalf.models.Endereco;
@@ -21,10 +21,10 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author David Washington
  */
-public class EnderecoDAO {
+public class AddressDAO {
     private Session session;
     
-    public EnderecoDAO() {
+    public AddressDAO() {
         session = new HibernateUtil().getSession();
     }
     
@@ -50,7 +50,7 @@ public class EnderecoDAO {
         return (Endereco) session.get(Endereco.class, id);
     }
 
-    public void put(Endereco endereco, Endereco2DTO enderecoDTO) {
+    public void put(Endereco endereco, AddressDTO enderecoDTO) {
         try {
             Transaction tx = session.beginTransaction();
             
@@ -68,5 +68,33 @@ public class EnderecoDAO {
         }   
         catch (Exception e) {
         };
+    }
+    
+    public AddressDTO getAddressDTO(Endereco address) {
+        AddressDTO addressDTO = new AddressDTO();
+        addressDTO.idCliente = address.getCliente().getIdCliente();
+        addressDTO.nomeEndereco = address.getNomeEndereco();
+        addressDTO.logradouroEndereco = address.getLogradouroEndereco();
+        addressDTO.numeroEndereco = address.getNumeroEndereco();
+        addressDTO.CEPEndereco = address.getCependereco();
+        addressDTO.complementoEndereco = address.getComplementoEndereco();
+        addressDTO.cidadeEndereco = address.getCidadeEndereco();
+        addressDTO.paisEndereco = address.getPaisEndereco();
+        addressDTO.UFEndereco = address.getUfendereco();
+        return addressDTO;
+    }
+    
+    public Endereco getAddressDTO(AddressDTO addressDTO) {
+        Endereco address = new Endereco();
+        address.setCliente(new ClientDAO().get(addressDTO.idCliente));
+        address.setNomeEndereco(addressDTO.nomeEndereco);
+        address.setLogradouroEndereco(addressDTO.logradouroEndereco);
+        address.setNumeroEndereco(addressDTO.numeroEndereco);
+        address.setCependereco(addressDTO.CEPEndereco);
+        address.setComplementoEndereco(addressDTO.complementoEndereco);
+        address.setCidadeEndereco(addressDTO.cidadeEndereco);
+        address.setPaisEndereco(addressDTO.paisEndereco);
+        address.setUfendereco(addressDTO.UFEndereco);
+        return address;
     }
 }
