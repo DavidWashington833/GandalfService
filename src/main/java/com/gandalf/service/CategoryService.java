@@ -38,21 +38,21 @@ public class CategoryService {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response get() {
-        ArrayList<CategoryDTO> categorysDTO = new ArrayList<CategoryDTO>();
+        ArrayList<CategoryDTO> categoriesDTO = new ArrayList<CategoryDTO>();
         
         try {
             CategoryDAO categoryDAO = new CategoryDAO();
-            List<Categoria> categorys = categoryDAO.get();
+            List<Categoria> categories = categoryDAO.get();
         
-            if (categorys == null) {
-                return Response.status(404).entity(categorys).build();
+            if (categories.size() == 0) {
+                return Response.status(404).entity(categories).build();
             }
             
-            for(Categoria category : categorys){
-                categorysDTO.add(categoryDAO.getCategoryDTO(category));
+            for(Categoria category : categories){
+                categoriesDTO.add(categoryDAO.getCategoryDTO(category));
             }
             
-            return Response.status(200).entity(categorysDTO).build();
+            return Response.status(200).entity(categoriesDTO).build();
         }        
         catch (Exception exception) {
             exception.printStackTrace();

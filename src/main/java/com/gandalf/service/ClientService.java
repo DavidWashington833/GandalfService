@@ -33,9 +33,8 @@ import javax.ws.rs.core.Response;
 public class ClientService {
      
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response post(ClientDTO clienteDTO) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    public Response post(ClientDTO clienteDTO) {
         try {
             ClientDAO clientDAO = new ClientDAO();
             Cliente client = clientDAO.getClient(clienteDTO);
@@ -64,9 +63,8 @@ public class ClientService {
     
     @POST
     @Path("/authentic")
-    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response authentic(Authentic authentic) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    public Response authentic(Authentic authentic) {
         try {
             ClientDAO clientDAO = new ClientDAO();
             Cliente client = clientDAO.get(authentic.email, authentic.password);
@@ -107,20 +105,32 @@ public class ClientService {
     
     @PUT
     @Path("/{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response edit(@PathParam("id") int id, ClientDTO clientDTO) {
         try {
             ClientDAO clientDAO = new ClientDAO();
             Cliente client = clientDAO.get(id);
+            ArrayList<ErrorMessage> errors = new ArrayList<ErrorMessage>();
             
             if (client == null) {
-                return Response.status(404).build();
+                return Response.status(404).entity(new ErrorMessage("Client not found.")).build();
+            }
+            
+            if (clientDAO.hasEmail(client.getEmailCliente())) {
+                errors.add(new ErrorMessage("Email is already registered."));
+            }
+            
+            if (clientDAO.hasCPF(client.getCpfcliente())) {
+                errors.add(new ErrorMessage("CPF is already registered."));
+            }
+            
+            if (errors.size() > 0) {
+                return Response.status(400).entity(errors).build();
             }
                 
             clientDAO.put(client, clientDTO);
             ClientDTO clientDTOChanged = clientDAO.getClientDTO(clientDAO.get(id));
-            return Response.status(200).entity(clientDTOChanged).build();
+            return Response.status(200).build();
         }  
         catch (Exception exception) {
             exception.printStackTrace();

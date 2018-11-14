@@ -27,20 +27,19 @@ public class ProductService {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response get() {
-        ArrayList<ProductDTO> productsDTO = new ArrayList<ProductDTO>(); 
-        
         try {
+            ArrayList<ProductDTO> productsDTO = new ArrayList<ProductDTO>(); 
             ProductDAO productDAO = new ProductDAO();
             List<Produto> products = productDAO.get();
-     
-            if (products == null) {
-                return Response.status(404).entity(products).build();
-            }
             
             for(Produto product : products){
                 if (product.getAtivoProduto() == 49) {
                     productsDTO.add(productDAO.getProductDTO(product));
                 }
+            }
+     
+            if (productsDTO.size() == 0) {
+                return Response.status(404).build();
             }
 
             return Response.status(200).entity(productsDTO).build();
@@ -60,7 +59,7 @@ public class ProductService {
             Produto product = productDAO.get(id);
         
             if (product == null) {
-                return Response.status(404).entity(product).build();
+                return Response.status(404).build();
             }
             
             ProductDTO productDTO = productDAO.getProductDTO(product);
@@ -73,23 +72,22 @@ public class ProductService {
     }
     
     @GET
-    @Path("/categoria/{id}")
+    @Path("/category/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getForCategoria(@PathParam("id") int id) {
-        ArrayList<ProductDTO> productsDTO = new ArrayList<ProductDTO>(); 
-        
         try {
+            ArrayList<ProductDTO> productsDTO = new ArrayList<ProductDTO>(); 
             ProductDAO productDAO = new ProductDAO();
             List<Produto> products = productDAO.getForCategoria(id);
-     
-            if (products == null) {
-                return Response.status(404).entity(products).build();
-            }
             
             for(Produto product : products){
                 if (product.getAtivoProduto() == 49) {
                     productsDTO.add(productDAO.getProductDTO(product));
                 }
+            }
+     
+            if (productsDTO.size() == 0) {
+                return Response.status(404).build();
             }
 
             return Response.status(200).entity(productsDTO).build();
@@ -101,7 +99,7 @@ public class ProductService {
     }
     
     @GET
-    @Path("/search/{nomeProduto}")
+    @Path("/search/{nameProduct}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response search(@PathParam("nameProduct") String nameProduct) {
         ArrayList<ProductDTO> productsDTO = new ArrayList<ProductDTO>(); 
@@ -109,15 +107,15 @@ public class ProductService {
         try {
             ProductDAO productDAO = new ProductDAO();
             List<Produto> products = productDAO.like(nameProduct);
-     
-            if (products == null) {
-                return Response.status(404).entity(products).build();
-            }
             
             for(Produto product : products){
                 if (product.getAtivoProduto() == 49) {
                     productsDTO.add(productDAO.getProductDTO(product));
                 }
+            }
+            
+            if (productsDTO.size() == 0) {
+                return Response.status(404).build();
             }
 
             return Response.status(200).entity(productsDTO).build();
