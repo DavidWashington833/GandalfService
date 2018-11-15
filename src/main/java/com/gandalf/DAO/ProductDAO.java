@@ -16,13 +16,7 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author David Washington
  */
-public class ProductDAO {
-    
-    private Session session;
-    
-    public ProductDAO() {
-        session = new HibernateUtil().getSession();
-    }
+public class ProductDAO extends DAO {
     
     public List<Produto> get() {
         return session.createCriteria(Produto.class).list();
@@ -33,13 +27,18 @@ public class ProductDAO {
     }
     
     public List<Produto> getForCategoria(int id) {
-        return session.createCriteria(Produto.class)
-                .add(Restrictions.eq("categoria.id", id)).list();
+        return session
+                .createCriteria(Produto.class)
+                .add(Restrictions.eq("categoria.id", id))
+                .list();
     }
     
     public List<Produto> like(String nomeProduto) {
-        return session.createCriteria(Produto.class)
-                .add(Restrictions.like("nomeProduto", "%" + nomeProduto + "%")).list();
+        return session
+                .createCriteria(Produto.class)
+                .add(Restrictions
+                .like("nomeProduto", "%" + nomeProduto + "%"))
+                .list();
     }
     
     public ProductDTO getProductDTO(Produto product) {

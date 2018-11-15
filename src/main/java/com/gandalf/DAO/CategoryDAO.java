@@ -16,12 +16,7 @@ import org.hibernate.Session;
  *
  * @author David Washington
  */
-public class CategoryDAO {
-    private Session session;
-    
-    public CategoryDAO() {
-        session = new HibernateUtil().getSession();
-    }
+public class CategoryDAO extends DAO {
     
     public List<Categoria> get() {
         return session.createCriteria(Categoria.class).list();
@@ -34,4 +29,5 @@ public class CategoryDAO {
         categoryDTO.description = category.getDescCategoria();
         return categoryDTO;
     }
+    
 }

@@ -20,20 +20,17 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author david.wfsilva
  */
-public class ClientDAO {
-    private Session session;
+public class ClientDAO extends DAO {
     
-    public ClientDAO() {
-        session = new HibernateUtil().getSession();
-    }
-    
-    public void add(Cliente cliente) {
+    public void add(Cliente client) {
         try {
-            Transaction tx = session.beginTransaction();
-            session.save(cliente);
-            tx.commit();
+            Transaction transaction = session.beginTransaction();
+            session.save(client);
+            transaction.commit();
         }   
-        catch (Exception e) {
+        catch (Exception exception) {
+            exception.printStackTrace();
+            throw exception;
         };
     }
     
@@ -42,33 +39,39 @@ public class ClientDAO {
     }
     
     public Cliente get(String email, String password) {
-        Cliente cliente = null;
-        List<Cliente> clientes = session.createCriteria(Cliente.class)
+        Cliente client = null;
+        
+        List<Cliente> clientes = session
+            .createCriteria(Cliente.class)
             .add(Restrictions.eq("emailCliente", email))
-            .add(Restrictions.eq("senhaCliente", password)).list();
+            .add(Restrictions.eq("senhaCliente", password))
+            .list();
+        
         if (clientes.size() > 0) {
-            cliente = clientes.get(0);
+            client = clientes.get(0);
         }
         
-        return cliente;
+        return client;
     }
 
-    public void put(Cliente cliente, ClientDTO clienteDTO) {
+    public void put(Cliente client, ClientDTO clientDTO) {
         try {
-            Transaction tx = session.beginTransaction();
+            Transaction transaction = session.beginTransaction();
             
-            cliente.setNomeCompletoCliente(clienteDTO.fullName);
-            cliente.setEmailCliente(clienteDTO.email);
-            cliente.setSenhaCliente(clienteDTO.password);
-            cliente.setCpfcliente(clienteDTO.CPF);
-            cliente.setCelularCliente(clienteDTO.cellPhone);
-            cliente.setTelComercialCliente(clienteDTO.commercialPhone);
-            cliente.setTelResidencialCliente(clienteDTO.homePhone);
+            client.setNomeCompletoCliente(clientDTO.fullName);
+            client.setEmailCliente(clientDTO.email);
+            client.setSenhaCliente(clientDTO.password);
+            client.setCpfcliente(clientDTO.CPF);
+            client.setCelularCliente(clientDTO.cellPhone);
+            client.setTelComercialCliente(clientDTO.commercialPhone);
+            client.setTelResidencialCliente(clientDTO.homePhone);
             
-            session.save(cliente);
-            tx.commit();
+            session.save(client);
+            transaction.commit();
         }   
-        catch (Exception e) {
+        catch (Exception exception) {
+            exception.printStackTrace();
+            throw exception;
         };
     }
     
@@ -105,16 +108,17 @@ public class ClientDAO {
     }
     
     public Cliente getClient(ClientDTO clientDTO) {
-        Cliente cliente = new Cliente();
-        cliente.setNomeCompletoCliente(clientDTO.fullName);
-        cliente.setEmailCliente(clientDTO.email);
-        cliente.setSenhaCliente(clientDTO.password);
-        cliente.setCpfcliente(clientDTO.CPF);
-        cliente.setCelularCliente(clientDTO.cellPhone);
-        cliente.setTelComercialCliente(clientDTO.commercialPhone);
-        cliente.setTelResidencialCliente(clientDTO.homePhone);
-        cliente.setDtNascCliente(clientDTO.birthDay);
-        cliente.setRecebeNewsLetter(clientDTO.acceptNewsletter);
-        return cliente;
+        Cliente client = new Cliente();
+        client.setNomeCompletoCliente(clientDTO.fullName);
+        client.setEmailCliente(clientDTO.email);
+        client.setSenhaCliente(clientDTO.password);
+        client.setCpfcliente(clientDTO.CPF);
+        client.setCelularCliente(clientDTO.cellPhone);
+        client.setTelComercialCliente(clientDTO.commercialPhone);
+        client.setTelResidencialCliente(clientDTO.homePhone);
+        client.setDtNascCliente(clientDTO.birthDay);
+        client.setRecebeNewsLetter(clientDTO.acceptNewsletter);
+        return client;
     }
+    
 }

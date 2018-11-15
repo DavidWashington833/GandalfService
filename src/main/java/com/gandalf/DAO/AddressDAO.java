@@ -20,52 +20,47 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author David Washington
  */
-public class AddressDAO {
-    private Session session;
+public class AddressDAO extends DAO {
     
-    public AddressDAO() {
-        session = new HibernateUtil().getSession();
-    }
-    
-    public void add(Endereco endereco) {
+    public void add(Endereco address) {
         try {
-            Transaction tx = session.beginTransaction();
-            session.save(endereco);
-            tx.commit();
+            Transaction transaction = session.beginTransaction();
+            session.save(address);
+            transaction.commit();
         }   
-        catch (Exception e) {
+        catch (Exception exception) {
+            exception.printStackTrace();
+            throw exception;
         };
     }
     
     public List<Endereco> getForClient(int id) {
-        List<Endereco> endereco = new ArrayList<Endereco>();
-        endereco = session.createCriteria(Endereco.class)
-            .add(Restrictions.eq("cliente.id", id)).list();
-        
-        return endereco;
+        return session.createCriteria(Endereco.class).add(Restrictions.eq("cliente.id", id)).list();
     }
     
     public Endereco get(int id) {
         return (Endereco) session.get(Endereco.class, id);
     }
 
-    public void put(Endereco endereco, AddressDTO enderecoDTO) {
+    public void put(Endereco address, AddressDTO addressDTO) {
         try {
-            Transaction tx = session.beginTransaction();
+            Transaction transaction = session.beginTransaction();
             
-            endereco.setNomeEndereco(enderecoDTO.name);
-            endereco.setLogradouroEndereco(enderecoDTO.publicPlace);
-            endereco.setNumeroEndereco(enderecoDTO.number);
-            endereco.setCependereco(enderecoDTO.CEP);
-            endereco.setComplementoEndereco(enderecoDTO.complement);
-            endereco.setCidadeEndereco(enderecoDTO.city);
-            endereco.setPaisEndereco(enderecoDTO.country);
-            endereco.setUfendereco(enderecoDTO.UF);
+            address.setNomeEndereco(addressDTO.name);
+            address.setLogradouroEndereco(addressDTO.publicPlace);
+            address.setNumeroEndereco(addressDTO.number);
+            address.setCependereco(addressDTO.CEP);
+            address.setComplementoEndereco(addressDTO.complement);
+            address.setCidadeEndereco(addressDTO.city);
+            address.setPaisEndereco(addressDTO.country);
+            address.setUfendereco(addressDTO.UF);
             
-            session.save(endereco);
-            tx.commit();
+            session.save(address);
+            transaction.commit();
         }   
-        catch (Exception e) {
+        catch (Exception exception) {
+            exception.printStackTrace();
+            throw exception;
         };
     }
     
@@ -96,4 +91,5 @@ public class AddressDAO {
         address.setUfendereco(addressDTO.UF);
         return address;
     }
+    
 }
