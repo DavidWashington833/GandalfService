@@ -6,7 +6,6 @@
 package com.gandalf.DAO;
 
 import com.gandalf.DTO.ClientDTO;
-import com.gandalf.DTO.Endereco2DTO;
 import com.gandalf.DTO.AddressDTO;
 import com.gandalf.HibernateUtil;
 import com.gandalf.models.Cliente;

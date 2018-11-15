@@ -8,7 +8,6 @@ package com.gandalf.service;
 import com.google.gson.Gson;
 import com.gandalf.DAO.ClientDAO;
 import com.gandalf.DTO.ClientDTO;
-import com.gandalf.Helpers;
 import com.gandalf.models.Authentic;
 import com.gandalf.models.Cliente;
 import com.gandalf.models.ErrorMessage;
