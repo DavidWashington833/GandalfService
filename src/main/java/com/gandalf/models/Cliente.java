@@ -12,29 +12,17 @@ import java.util.Set;
  */
 public class Cliente  implements java.io.Serializable {
 
-    @Expose(serialize = true)
     private int idCliente;
-    @Expose(serialize = true)
     private String nomeCompletoCliente;
-    @Expose(serialize = true)
     private String emailCliente;
-    @Expose(serialize = true)
     private String senhaCliente;
-    @Expose(serialize = true)
     private String cpfcliente;
-    @Expose(serialize = true)
     private String celularCliente;
-    @Expose(serialize = true)
     private String telComercialCliente;
-    @Expose(serialize = true)
     private String telResidencialCliente;
-    @Expose(serialize = true)
     private Date dtNascCliente;
-    @Expose(serialize = true)
     private Boolean recebeNewsLetter;
-    @Expose(serialize = false)
     private Set pedidos = new HashSet(0);
-    @Expose(serialize = false)
     private Set enderecos = new HashSet(0);
 
     public Cliente() {

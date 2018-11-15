@@ -12,13 +12,9 @@ import java.util.Set;
 public class Categoria  implements java.io.Serializable {
 
 
-     @Expose(serialize = true)
      private int idCategoria;
-     @Expose(serialize = true)
      private String nomeCategoria;
-     @Expose(serialize = true)
      private String descCategoria;
-     @Expose(serialize = false)
      private Set produtos = new HashSet(0);
 
     public Categoria() {

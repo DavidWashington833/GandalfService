@@ -17,14 +17,12 @@ import javax.persistence.*;
 @Entity
 public class Pedido  implements java.io.Serializable {
 
-    @Expose(serialize = true)
     private int idPedido;
     private Aplicacao aplicacao;
     private Cliente cliente;
     private Endereco endereco;
     private StatusPedido statusPedido;
     private TipoPagamento tipoPagamento;
-    @Temporal(TemporalType.DATE)
     private Date dataPedido;
     private Set itemPedidos = new HashSet(0);
 

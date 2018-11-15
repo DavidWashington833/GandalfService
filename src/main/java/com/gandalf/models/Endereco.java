@@ -11,24 +11,15 @@ import java.util.Set;
  */
 public class Endereco  implements java.io.Serializable {
 
-    @Expose(serialize = true)
     private int idEndereco;
     private Cliente cliente;
-    @Expose(serialize = true)
     private String nomeEndereco;
-    @Expose(serialize = true)
     private String logradouroEndereco;
-    @Expose(serialize = true)
     private String numeroEndereco;
-    @Expose(serialize = true)
     private String cependereco;
-    @Expose(serialize = true)
     private String complementoEndereco;
-    @Expose(serialize = true)
     private String cidadeEndereco;
-    @Expose(serialize = true)
     private String paisEndereco;
-    @Expose(serialize = true)
     private String ufendereco;
     private Set pedidos = new HashSet(0);
 
