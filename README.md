@@ -9,7 +9,7 @@ These instructions will get you a copy of the project up and running on your loc
 ## Prerequisites
 
 
-You need to have [Java 8](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html), [Tomcat 8](https://tomcat.apache.org/download-80.cgi) and SQL Server local or in cloud.
+You need to have [Java 8](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html), [Tomcat 8](https://tomcat.apache.org/download-80.cgi) and SQL Server.
 
 Create data base and execute this [script](script.sql).
 
