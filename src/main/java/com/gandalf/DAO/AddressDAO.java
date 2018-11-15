@@ -53,14 +53,14 @@ public class AddressDAO {
         try {
             Transaction tx = session.beginTransaction();
             
-            endereco.setNomeEndereco(enderecoDTO.nomeEndereco);
-            endereco.setLogradouroEndereco(enderecoDTO.logradouroEndereco);
-            endereco.setNumeroEndereco(enderecoDTO.numeroEndereco);
-            endereco.setCependereco(enderecoDTO.CEPEndereco);
-            endereco.setComplementoEndereco(enderecoDTO.complementoEndereco);
-            endereco.setCidadeEndereco(enderecoDTO.cidadeEndereco);
-            endereco.setPaisEndereco(enderecoDTO.paisEndereco);
-            endereco.setUfendereco(enderecoDTO.UFEndereco);
+            endereco.setNomeEndereco(enderecoDTO.name);
+            endereco.setLogradouroEndereco(enderecoDTO.publicPlace);
+            endereco.setNumeroEndereco(enderecoDTO.number);
+            endereco.setCependereco(enderecoDTO.CEP);
+            endereco.setComplementoEndereco(enderecoDTO.complement);
+            endereco.setCidadeEndereco(enderecoDTO.city);
+            endereco.setPaisEndereco(enderecoDTO.country);
+            endereco.setUfendereco(enderecoDTO.UF);
             
             session.save(endereco);
             tx.commit();
@@ -71,29 +71,29 @@ public class AddressDAO {
     
     public AddressDTO getAddressDTO(Endereco address) {
         AddressDTO addressDTO = new AddressDTO();
-        addressDTO.idCliente = address.getCliente().getIdCliente();
-        addressDTO.nomeEndereco = address.getNomeEndereco();
-        addressDTO.logradouroEndereco = address.getLogradouroEndereco();
-        addressDTO.numeroEndereco = address.getNumeroEndereco();
-        addressDTO.CEPEndereco = address.getCependereco();
-        addressDTO.complementoEndereco = address.getComplementoEndereco();
-        addressDTO.cidadeEndereco = address.getCidadeEndereco();
-        addressDTO.paisEndereco = address.getPaisEndereco();
-        addressDTO.UFEndereco = address.getUfendereco();
+        addressDTO.idClient = address.getCliente().getIdCliente();
+        addressDTO.name = address.getNomeEndereco();
+        addressDTO.publicPlace = address.getLogradouroEndereco();
+        addressDTO.number = address.getNumeroEndereco();
+        addressDTO.CEP = address.getCependereco();
+        addressDTO.complement = address.getComplementoEndereco();
+        addressDTO.city = address.getCidadeEndereco();
+        addressDTO.country = address.getPaisEndereco();
+        addressDTO.UF = address.getUfendereco();
         return addressDTO;
     }
     
     public Endereco getAddress(AddressDTO addressDTO) {
         Endereco address = new Endereco();
-        address.setCliente(new ClientDAO().get(addressDTO.idCliente));
-        address.setNomeEndereco(addressDTO.nomeEndereco);
-        address.setLogradouroEndereco(addressDTO.logradouroEndereco);
-        address.setNumeroEndereco(addressDTO.numeroEndereco);
-        address.setCependereco(addressDTO.CEPEndereco);
-        address.setComplementoEndereco(addressDTO.complementoEndereco);
-        address.setCidadeEndereco(addressDTO.cidadeEndereco);
-        address.setPaisEndereco(addressDTO.paisEndereco);
-        address.setUfendereco(addressDTO.UFEndereco);
+        address.setCliente(new ClientDAO().get(addressDTO.idClient));
+        address.setNomeEndereco(addressDTO.name);
+        address.setLogradouroEndereco(addressDTO.publicPlace);
+        address.setNumeroEndereco(addressDTO.number);
+        address.setCependereco(addressDTO.CEP);
+        address.setComplementoEndereco(addressDTO.complement);
+        address.setCidadeEndereco(addressDTO.city);
+        address.setPaisEndereco(addressDTO.country);
+        address.setUfendereco(addressDTO.UF);
         return address;
     }
 }

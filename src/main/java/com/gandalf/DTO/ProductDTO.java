@@ -19,13 +19,13 @@ import java.util.Set;
  */
 public class ProductDTO {
 
-    public int idProduct;
-    public String nameProduct;
-    public BigDecimal priceProduct;
-    public BigDecimal discountProduct;
-    public Integer stockProduct;
-    public String descriptionProduct;
-    public int activeProduct;
-    public byte[] imageProduct;
+    public int id;
+    public String name;
+    public String description;
+    public BigDecimal price;
+    public BigDecimal discount;
+    public int active;
+    public Integer stock;
+    public byte[] image;
 
 }

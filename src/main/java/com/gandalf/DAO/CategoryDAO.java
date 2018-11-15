@@ -29,9 +29,9 @@ public class CategoryDAO {
     
     public CategoryDTO getCategoryDTO(Categoria category) {
         CategoryDTO categoryDTO = new CategoryDTO();
-        categoryDTO.idCategoria = category.getIdCategoria();
-        categoryDTO.nomeCategoria = category.getNomeCategoria();
-        categoryDTO.descCategoria = category.getDescCategoria();
+        categoryDTO.id = category.getIdCategoria();
+        categoryDTO.name = category.getNomeCategoria();
+        categoryDTO.description = category.getDescCategoria();
         return categoryDTO;
     }
 }

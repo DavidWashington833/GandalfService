@@ -13,16 +13,17 @@ import com.gandalf.models.Endereco;
  *
  * @author David Washington
  */
-public class AddressDTO {    
+public class AddressDTO {
     
-    public int idCliente;
-    public String nomeEndereco;
-    public String logradouroEndereco;
-    public String numeroEndereco;
-    public String CEPEndereco;
-    public String complementoEndereco;
-    public String cidadeEndereco;
-    public String paisEndereco;
-    public String UFEndereco;
+    public int id;    
+    public int idClient;
+    public String name;
+    public String publicPlace;
+    public String number;
+    public String CEP;
+    public String complement;
+    public String city;
+    public String country;
+    public String UF;
     
 }

@@ -57,13 +57,13 @@ public class ClientDAO {
         try {
             Transaction tx = session.beginTransaction();
             
-            cliente.setNomeCompletoCliente(clienteDTO.nomeCompletoCliente);
-            cliente.setEmailCliente(clienteDTO.emailCliente);
-            cliente.setSenhaCliente(clienteDTO.senhaCliente);
-            cliente.setCpfcliente(clienteDTO.cpfcliente);
-            cliente.setCelularCliente(clienteDTO.celularCliente);
-            cliente.setTelComercialCliente(clienteDTO.telComercialCliente);
-            cliente.setTelResidencialCliente(clienteDTO.telResidencialCliente);
+            cliente.setNomeCompletoCliente(clienteDTO.fullName);
+            cliente.setEmailCliente(clienteDTO.email);
+            cliente.setSenhaCliente(clienteDTO.password);
+            cliente.setCpfcliente(clienteDTO.CPF);
+            cliente.setCelularCliente(clienteDTO.cellPhone);
+            cliente.setTelComercialCliente(clienteDTO.commercialPhone);
+            cliente.setTelResidencialCliente(clienteDTO.homePhone);
             
             session.save(cliente);
             tx.commit();
@@ -92,29 +92,29 @@ public class ClientDAO {
     
     public ClientDTO getClientDTO(Cliente client) {
         ClientDTO clientDTO = new ClientDTO();
-        clientDTO.nomeCompletoCliente = client.getNomeCompletoCliente();
-        clientDTO.emailCliente = client.getEmailCliente();
-        clientDTO.senhaCliente = client.getSenhaCliente();
-        clientDTO.cpfcliente = client.getCpfcliente();
-        clientDTO.celularCliente = client.getCelularCliente();
-        clientDTO.telComercialCliente = client.getTelComercialCliente();
-        clientDTO.telResidencialCliente = client.getTelResidencialCliente();
-        clientDTO.dtNascCliente = client.getDtNascCliente();
-        clientDTO.recebeNewsLetter = client.getRecebeNewsLetter();
+        clientDTO.fullName = client.getNomeCompletoCliente();
+        clientDTO.email = client.getEmailCliente();
+        clientDTO.password = client.getSenhaCliente();
+        clientDTO.CPF = client.getCpfcliente();
+        clientDTO.cellPhone = client.getCelularCliente();
+        clientDTO.commercialPhone = client.getTelComercialCliente();
+        clientDTO.homePhone = client.getTelResidencialCliente();
+        clientDTO.birthDay = client.getDtNascCliente();
+        clientDTO.acceptNewsletter = client.getRecebeNewsLetter();
         return clientDTO;
     }
     
     public Cliente getClient(ClientDTO clientDTO) {
         Cliente cliente = new Cliente();
-        cliente.setNomeCompletoCliente(clientDTO.nomeCompletoCliente);
-        cliente.setEmailCliente(clientDTO.emailCliente);
-        cliente.setSenhaCliente(clientDTO.senhaCliente);
-        cliente.setCpfcliente(clientDTO.cpfcliente);
-        cliente.setCelularCliente(clientDTO.celularCliente);
-        cliente.setTelComercialCliente(clientDTO.telComercialCliente);
-        cliente.setTelResidencialCliente(clientDTO.telResidencialCliente);
-        cliente.setDtNascCliente(clientDTO.dtNascCliente);
-        cliente.setRecebeNewsLetter(clientDTO.recebeNewsLetter);
+        cliente.setNomeCompletoCliente(clientDTO.fullName);
+        cliente.setEmailCliente(clientDTO.email);
+        cliente.setSenhaCliente(clientDTO.password);
+        cliente.setCpfcliente(clientDTO.CPF);
+        cliente.setCelularCliente(clientDTO.cellPhone);
+        cliente.setTelComercialCliente(clientDTO.commercialPhone);
+        cliente.setTelResidencialCliente(clientDTO.homePhone);
+        cliente.setDtNascCliente(clientDTO.birthDay);
+        cliente.setRecebeNewsLetter(clientDTO.acceptNewsletter);
         return cliente;
     }
 }

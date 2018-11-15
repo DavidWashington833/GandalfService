@@ -18,8 +18,8 @@ import java.util.Set;
  */
 public class CategoryDTO {
 
-    public int idCategoria;
-    public String nomeCategoria;
-    public String descCategoria;
+    public int id;
+    public String name;
+    public String description;
     
 }
