@@ -37,7 +37,7 @@ public class AddressDAO {
         };
     }
     
-    public List<Endereco> getForCliente(int id) {
+    public List<Endereco> getForClient(int id) {
         List<Endereco> endereco = new ArrayList<Endereco>();
         endereco = session.createCriteria(Endereco.class)
             .add(Restrictions.eq("cliente.id", id)).list();
@@ -83,7 +83,7 @@ public class AddressDAO {
         return addressDTO;
     }
     
-    public Endereco getAddressDTO(AddressDTO addressDTO) {
+    public Endereco getAddress(AddressDTO addressDTO) {
         Endereco address = new Endereco();
         address.setCliente(new ClientDAO().get(addressDTO.idCliente));
         address.setNomeEndereco(addressDTO.nomeEndereco);

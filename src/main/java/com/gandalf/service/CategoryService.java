@@ -10,7 +10,6 @@ import com.gandalf.DAO.CategoryDAO;
 import com.gandalf.DAO.ProductDAO;
 import com.gandalf.DTO.CategoryDTO;
 import com.gandalf.DTO.ProductDTO;
-import com.gandalf.Helpers;
 import com.gandalf.models.Categoria;
 import com.gandalf.models.Produto;
 import java.nio.charset.StandardCharsets;

@@ -102,9 +102,8 @@ public class ProductService {
     @Path("/search/{nameProduct}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response search(@PathParam("nameProduct") String nameProduct) {
-        ArrayList<ProductDTO> productsDTO = new ArrayList<ProductDTO>(); 
-        
         try {
+            ArrayList<ProductDTO> productsDTO = new ArrayList<ProductDTO>(); 
             ProductDAO productDAO = new ProductDAO();
             List<Produto> products = productDAO.like(nameProduct);
             

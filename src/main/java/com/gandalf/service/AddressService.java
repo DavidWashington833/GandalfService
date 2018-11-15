@@ -38,11 +38,10 @@ import javax.ws.rs.core.Response;
 public class AddressService {
       
     @POST
-    @Produces(MediaType.APPLICATION_JSON)
     public Response post(AddressDTO addressDTO) {
         try {
             AddressDAO addressDAO = new AddressDAO();
-            Endereco address = addressDAO.getAddressDTO(addressDTO);
+            Endereco address = addressDAO.getAddress(addressDTO);
             addressDAO.add(address);
             return Response.status(201).build();
         }        
@@ -55,11 +54,11 @@ public class AddressService {
     @GET
     @Path("/client/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getForCategoria(@PathParam("id") int id) {
+    public Response getForClient(@PathParam("id") int id) {
         try {
             ArrayList<AddressDTO> addressesDTO = new ArrayList<AddressDTO>(); 
             AddressDAO addressDAO = new AddressDAO();
-            List<Endereco> addresses = addressDAO.getForCliente(id);
+            List<Endereco> addresses = addressDAO.getForClient(id);
             
             for(Endereco address : addresses){
                 addressesDTO.add(addressDAO.getAddressDTO(address));
