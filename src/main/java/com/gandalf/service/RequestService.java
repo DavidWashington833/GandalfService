@@ -6,7 +6,7 @@
 package com.gandalf.service;
 
 import com.google.gson.Gson;
-import com.gandalf.DAO.PedidoDAO;
+import com.gandalf.DAO.RequestDAO;
 import com.gandalf.Helpers;
 import com.gandalf.models.Pedido;
 import java.io.UnsupportedEncodingException;
@@ -27,7 +27,7 @@ import javax.ws.rs.core.Response;
  * @author David Washington
  */
 @Path("/pedido")
-public class PedidoService { 
+public class RequestService { 
     @POST
     @Path("/teste")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -89,7 +89,7 @@ public class PedidoService {
         Response response = null;
         
         try {
-            pedidos = new PedidoDAO().getForCliente(id);
+            pedidos = new RequestDAO().getForCliente(id);
             response = Response.status(200).entity(gson.toJson(pedidos)).build();
         }        
         catch (Exception exception) {

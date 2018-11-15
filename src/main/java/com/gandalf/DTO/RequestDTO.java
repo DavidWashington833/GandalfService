@@ -19,23 +19,23 @@ import java.util.Date;
  *
  * @author David Washington
  */
-public class PedidoDTO implements Serializable {
+public class RequestDTO implements Serializable {
     public int idCliente;
     public int idStatus;
     public int idTipoPagto;
     public int idEndereco;
 
-    public PedidoDTO(int idCliente, int idStatus, int idTipoPagto, int idEndereco) {
+    public RequestDTO(int idCliente, int idStatus, int idTipoPagto, int idEndereco) {
         this.idCliente = idCliente;
         this.idStatus = idStatus;
         this.idTipoPagto = idTipoPagto;
         this.idEndereco = idEndereco;
     }
 
-    public PedidoDTO() {
+    public RequestDTO() {
     }
 
-    public PedidoDTO(Pedido pedido) {
+    public RequestDTO(Pedido pedido) {
         this.idCliente = pedido.getCliente().getIdCliente();
         this.idStatus = pedido.getStatusPedido().getIdStatus();
         this.idTipoPagto = pedido.getTipoPagamento().getIdTipoPagto();

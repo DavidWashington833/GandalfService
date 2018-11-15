@@ -5,7 +5,7 @@
  */
 package com.gandalf.DTO;
 
-import com.gandalf.DAO.PedidoDAO;
+import com.gandalf.DAO.RequestDAO;
 import com.gandalf.DAO.ProductDAO;
 import com.gandalf.models.ItemPedido;
 import java.io.Serializable;

@@ -17,10 +17,10 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author David Washington
  */
-public class PedidoDAO {
+public class RequestDAO {
     private Session session;
     
-    public PedidoDAO() {
+    public RequestDAO() {
         session = new HibernateUtil().getSession();
     }
     

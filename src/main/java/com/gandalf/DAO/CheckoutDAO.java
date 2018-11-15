@@ -7,7 +7,7 @@ package com.gandalf.DAO;
 
 import com.gandalf.DTO.CheckoutDTO;
 import com.gandalf.DTO.ItemPedidoDTO;
-import com.gandalf.DTO.PedidoDTO;
+import com.gandalf.DTO.RequestDTO;
 import com.gandalf.HibernateUtil;
 import com.gandalf.models.Aplicacao;
 import com.gandalf.models.Pedido;

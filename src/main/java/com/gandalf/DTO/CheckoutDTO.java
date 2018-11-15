@@ -12,21 +12,21 @@ import java.io.Serializable;
  * @author David Washington
  */
 public class CheckoutDTO implements Serializable {
-    public PedidoDTO pedidoDTO;
+    public RequestDTO pedidoDTO;
     public ItemPedidoDTO[] itemPedidosDTO;
 
     public CheckoutDTO() {
     }
 
-    public CheckoutDTO(PedidoDTO pedidoDTO) {
+    public CheckoutDTO(RequestDTO pedidoDTO) {
         this.pedidoDTO = pedidoDTO;
     }
 
-    public PedidoDTO getPedidoDTO() {
+    public RequestDTO getPedidoDTO() {
         return pedidoDTO;
     }
 
-    public void setPedidoDTO(PedidoDTO pedidoDTO) {
+    public void setPedidoDTO(RequestDTO pedidoDTO) {
         this.pedidoDTO = pedidoDTO;
     }
 

@@ -13,9 +13,9 @@ import com.google.gson.JsonParser;
 import com.gandalf.DAO.CheckoutDAO;
 import com.gandalf.DAO.ClientDAO;
 import com.gandalf.DTO.CheckoutDTO;
-import com.gandalf.DTO.PedidoDTO;
+import com.gandalf.DTO.RequestDTO;
 import com.gandalf.DTO.ItemPedidoDTO;
-import com.gandalf.DTO.PedidoDTO;
+import com.gandalf.DTO.RequestDTO;
 import com.gandalf.Helpers;
 import com.gandalf.models.Cliente;
 import java.io.UnsupportedEncodingException;
@@ -48,7 +48,7 @@ public class CheckoutService {
         
         try {
             ItemPedidoDTO[] itens = gson.fromJson(Helpers.getSubArrayJson(json, "itemPedidosDTO"), ItemPedidoDTO[].class);
-            PedidoDTO pedido = gson.fromJson(Helpers.getSubObjectJson(json, "pedidoDTO"), PedidoDTO.class);
+            RequestDTO pedido = gson.fromJson(Helpers.getSubObjectJson(json, "pedidoDTO"), RequestDTO.class);
 
             CheckoutDAO checkoutDAO = new CheckoutDAO();
             CheckoutDTO checkoutDTO = new CheckoutDTO();
