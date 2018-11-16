@@ -25,4 +25,4 @@ This project was not developed in [NetBeans](https://netbeans.org/downloads/).
 
 ## Authors
 
-* **David Washington** - [davidwashington833](https://github.com/DavidWashington833)
+* [David Washington](https://github.com/DavidWashington833)
