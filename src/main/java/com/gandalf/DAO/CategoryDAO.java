@@ -1,20 +1,20 @@
 package com.gandalf.DAO;
 
 import com.gandalf.DTO.CategoryDTO;
-import com.gandalf.models.Categoria;
+import com.gandalf.models.Category;
 import java.util.List;
 
 public class CategoryDAO extends DAO {
 
-    public List<Categoria> get() {
-        return session.createCriteria(Categoria.class).list();
+    public List<Category> get() {
+        return session.createCriteria(Category.class).list();
     }
 
-    public CategoryDTO getCategoryDTO(Categoria category) {
+    public CategoryDTO getCategoryDTO(Category category) {
         CategoryDTO categoryDTO = new CategoryDTO();
-        categoryDTO.id = category.getIdCategoria();
-        categoryDTO.name = category.getNomeCategoria();
-        categoryDTO.description = category.getDescCategoria();
+        categoryDTO.id = category.getIdCategory();
+        categoryDTO.name = category.getNameCategory();
+        categoryDTO.description = category.getDescriptionCategory();
         return categoryDTO;
     }
 

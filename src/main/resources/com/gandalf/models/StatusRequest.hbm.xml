@@ -2,19 +2,19 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 07/10/2017 20:49:53 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="Gandalf" name="com.gandalf.models.StatusPedido" optimistic-lock="version" schema="dbo" table="StatusPedido">
+  <class catalog="Gandalf" name="com.gandalf.models.StatusRequest" optimistic-lock="version" schema="dbo" table="StatusRequest">
     <id name="idStatus" type="byte">
       <column name="idStatus"/>
       <generator class="assigned"/>
     </id>
-    <property name="descStatus" type="string">
-      <column length="50" name="descStatus" not-null="true"/>
+    <property name="descriptionStatus" type="string">
+      <column length="50" name="descriptionStatus" not-null="true"/>
     </property>
-    <set fetch="select" inverse="true" lazy="true" name="pedidos" table="Pedido">
+    <set fetch="select" inverse="true" lazy="true" name="requests" table="Request">
       <key>
         <column name="idStatus" not-null="true"/>
       </key>
-      <one-to-many class="com.gandalf.models.Pedido"/>
+      <one-to-many class="com.gandalf.models.Request"/>
     </set>
   </class>
 </hibernate-mapping>

@@ -2,7 +2,7 @@ package com.gandalf.service;
 
 import com.gandalf.DAO.AddressDAO;
 import com.gandalf.DTO.AddressDTO;
-import com.gandalf.models.Endereco;
+import com.gandalf.models.Address;
 import com.gandalf.models.ErrorMessage;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class AddressService {
     public Response post(AddressDTO addressDTO) {
         try {
             AddressDAO addressDAO = new AddressDAO();
-            Endereco address = addressDAO.getAddress(addressDTO);
+            Address address = addressDAO.getAddress(addressDTO);
             addressDAO.add(address);
             return Response.status(201).build();
         } catch (Exception exception) {
@@ -38,9 +38,9 @@ public class AddressService {
         try {
             ArrayList<AddressDTO> addressesDTO = new ArrayList<AddressDTO>();
             AddressDAO addressDAO = new AddressDAO();
-            List<Endereco> addresses = addressDAO.getForClient(id);
+            List<Address> addresses = addressDAO.getForClient(id);
 
-            for (Endereco address : addresses) {
+            for (Address address : addresses) {
                 addressesDTO.add(addressDAO.getAddressDTO(address));
             }
 
@@ -61,7 +61,7 @@ public class AddressService {
     public Response put(@PathParam("id") int id, AddressDTO addressDTO) {
         try {
             AddressDAO addressDAO = new AddressDAO();
-            Endereco address = addressDAO.get(id);
+            Address address = addressDAO.get(id);
 
             if (address == null) {
                 return Response.status(404).entity(new ErrorMessage("Address not found.")).build();

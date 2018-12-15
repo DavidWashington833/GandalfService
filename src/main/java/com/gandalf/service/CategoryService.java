@@ -2,7 +2,7 @@ package com.gandalf.service;
 
 import com.gandalf.DAO.CategoryDAO;
 import com.gandalf.DTO.CategoryDTO;
-import com.gandalf.models.Categoria;
+import com.gandalf.models.Category;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.GET;
@@ -21,13 +21,13 @@ public class CategoryService {
 
         try {
             CategoryDAO categoryDAO = new CategoryDAO();
-            List<Categoria> categories = categoryDAO.get();
+            List<Category> categories = categoryDAO.get();
 
             if (categories.isEmpty()) {
-                return Response.status(404).entity(categories).build();
+                return Response.status(404).build();
             }
 
-            for (Categoria category : categories) {
+            for (Category category : categories) {
                 categoriesDTO.add(categoryDAO.getCategoryDTO(category));
             }
 

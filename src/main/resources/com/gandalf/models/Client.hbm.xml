@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/10/2017 20:49:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="Gandalf" name="com.gandalf.models.Client" optimistic-lock="version" schema="dbo" table="Client">
+    <id name="idClient" type="int">
+      <column name="idClient"/>
+      <generator class="native"/>
+    </id>
+    <property name="fullNameClient" type="string">
+      <column length="100" name="fullNameClient" not-null="true"/>
+    </property>
+    <property name="emailClient" type="string">
+      <column length="100" name="emailClient" not-null="true"/>
+    </property>
+    <property name="passwordClient" type="string">
+      <column length="64" name="passwordClient" not-null="true"/>
+    </property>
+    <property name="CPFClient" type="string">
+      <column length="14" name="CPFClient" not-null="true"/>
+    </property>
+    <property name="phoneClient" type="string">
+      <column length="20" name="phoneClient"/>
+    </property>
+    <property name="birthDayClient" type="date">
+      <column length="10" name="birthDayClient"/>
+    </property>
+    <property name="newsLetterClient" type="java.lang.Boolean">
+      <column name="newsLetterClient"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="requests" table="Request">
+      <key>
+        <column name="idClient" not-null="true"/>
+      </key>
+      <one-to-many class="com.gandalf.models.Request"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="address" table="Address">
+      <key>
+        <column name="idClient" not-null="true"/>
+      </key>
+      <one-to-many class="com.gandalf.models.Address"/>
+    </set>
+  </class>
+</hibernate-mapping>

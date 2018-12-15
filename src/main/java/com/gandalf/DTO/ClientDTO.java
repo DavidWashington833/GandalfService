@@ -9,10 +9,8 @@ public class ClientDTO {
     public String email;
     public String password;
     public String CPF;
-    public String cellPhone;
-    public String commercialPhone;
-    public String homePhone;
+    public String phone;
     public Date birthDay;
-    public Boolean acceptNewsletter;
+    public Boolean newsLetter;
 
 }

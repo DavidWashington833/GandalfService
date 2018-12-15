@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/10/2017 20:49:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="Gandalf" name="com.gandalf.models.Application" optimistic-lock="version" schema="dbo" table="Application">
+    <id name="idApplication" type="byte">
+      <column name="idApplication"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="descriptionApplication" type="string">
+      <column length="50" name="descriptionApplication" not-null="true"/>
+    </property>
+    <property name="typeApplication" type="char">
+      <column length="1" name="typeApplication" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="requests" table="Request">
+      <key>
+        <column name="idApplication" not-null="true"/>
+      </key>
+      <one-to-many class="com.gandalf.models.Request"/>
+    </set>
+  </class>
+</hibernate-mapping>

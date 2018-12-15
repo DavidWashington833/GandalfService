@@ -2,7 +2,7 @@ package com.gandalf.service;
 
 import com.gandalf.DAO.ProductDAO;
 import com.gandalf.DTO.ProductDTO;
-import com.gandalf.models.Produto;
+import com.gandalf.models.Product;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.GET;
@@ -21,12 +21,11 @@ public class ProductService {
         try {
             ArrayList<ProductDTO> productsDTO = new ArrayList<ProductDTO>();
             ProductDAO productDAO = new ProductDAO();
-            List<Produto> products = productDAO.get();
 
-            for (Produto product : products) {
-                if (product.getAtivoProduto() == 49) {
-                    productsDTO.add(productDAO.getProductDTO(product));
-                }
+            List<Product> products = productDAO.get();
+
+            for (Product product : products) {
+                productsDTO.add(productDAO.getProductDTO(product));
             }
 
             if (productsDTO.isEmpty()) {
@@ -46,7 +45,7 @@ public class ProductService {
     public Response get(@PathParam("id") int id) {
         try {
             ProductDAO productDAO = new ProductDAO();
-            Produto product = productDAO.get(id);
+            Product product = productDAO.get(id);
 
             if (product == null) {
                 return Response.status(404).build();
@@ -67,12 +66,10 @@ public class ProductService {
         try {
             ArrayList<ProductDTO> productsDTO = new ArrayList<ProductDTO>();
             ProductDAO productDAO = new ProductDAO();
-            List<Produto> products = productDAO.getForCategoria(id);
+            List<Product> products = productDAO.getForCategoria(id);
 
-            for (Produto product : products) {
-                if (product.getAtivoProduto() == 49) {
-                    productsDTO.add(productDAO.getProductDTO(product));
-                }
+            for (Product product : products) {
+                productsDTO.add(productDAO.getProductDTO(product));
             }
 
             if (productsDTO.isEmpty()) {
@@ -93,12 +90,10 @@ public class ProductService {
         try {
             ArrayList<ProductDTO> productsDTO = new ArrayList<ProductDTO>();
             ProductDAO productDAO = new ProductDAO();
-            List<Produto> products = productDAO.like(nameProduct);
+            List<Product> products = productDAO.like(nameProduct);
 
-            for (Produto product : products) {
-                if (product.getAtivoProduto() == 49) {
-                    productsDTO.add(productDAO.getProductDTO(product));
-                }
+            for (Product product : products) {
+                productsDTO.add(productDAO.getProductDTO(product));
             }
 
             if (productsDTO.isEmpty()) {

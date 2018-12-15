@@ -3,7 +3,7 @@ package com.gandalf.service;
 import com.gandalf.DAO.ClientDAO;
 import com.gandalf.DTO.ClientDTO;
 import com.gandalf.models.Authentic;
-import com.gandalf.models.Cliente;
+import com.gandalf.models.Client;
 import com.gandalf.models.ErrorMessage;
 import java.util.ArrayList;
 import javax.ws.rs.GET;
@@ -23,14 +23,14 @@ public class ClientService {
     public Response post(ClientDTO clienteDTO) {
         try {
             ClientDAO clientDAO = new ClientDAO();
-            Cliente client = clientDAO.getClient(clienteDTO);
+            Client client = clientDAO.getClient(clienteDTO);
             ArrayList<ErrorMessage> errors = new ArrayList<ErrorMessage>();
 
-            if (clientDAO.hasEmail(client.getEmailCliente())) {
+            if (clientDAO.hasEmail(client.getEmailClient())) {
                 errors.add(new ErrorMessage("Email is already registered."));
             }
 
-            if (clientDAO.hasCPF(client.getCpfcliente())) {
+            if (clientDAO.hasCPF(client.getCPFClient())) {
                 errors.add(new ErrorMessage("CPF is already registered."));
             }
 
@@ -52,7 +52,7 @@ public class ClientService {
     public Response authentic(Authentic authentic) {
         try {
             ClientDAO clientDAO = new ClientDAO();
-            Cliente client = clientDAO.get(authentic.email, authentic.password);
+            Client client = clientDAO.get(authentic.email, authentic.password);
 
             if (client == null) {
                 return Response.status(401).build();
@@ -72,7 +72,7 @@ public class ClientService {
     public Response get(@PathParam("id") int id) {
         try {
             ClientDAO clientDAO = new ClientDAO();
-            Cliente client = clientDAO.get(id);
+            Client client = clientDAO.get(id);
 
             if (client == null) {
                 return Response.status(404).build();
@@ -92,19 +92,11 @@ public class ClientService {
     public Response put(@PathParam("id") int id, ClientDTO clientDTO) {
         try {
             ClientDAO clientDAO = new ClientDAO();
-            Cliente client = clientDAO.get(id);
+            Client client = clientDAO.get(id);
             ArrayList<ErrorMessage> errors = new ArrayList<ErrorMessage>();
 
             if (client == null) {
                 return Response.status(404).entity(new ErrorMessage("Client not found.")).build();
-            }
-
-            if (clientDAO.hasEmail(client.getEmailCliente())) {
-                errors.add(new ErrorMessage("Email is already registered."));
-            }
-
-            if (clientDAO.hasCPF(client.getCpfcliente())) {
-                errors.add(new ErrorMessage("CPF is already registered."));
             }
 
             if (errors.size() > 0) {

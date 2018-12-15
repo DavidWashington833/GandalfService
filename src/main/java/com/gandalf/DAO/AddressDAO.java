@@ -1,14 +1,14 @@
 package com.gandalf.DAO;
 
 import com.gandalf.DTO.AddressDTO;
-import com.gandalf.models.Endereco;
+import com.gandalf.models.Address;
 import java.util.List;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 public class AddressDAO extends DAO {
 
-    public void add(Endereco address) {
+    public void add(Address address) {
         try {
             Transaction transaction = session.beginTransaction();
             session.save(address);
@@ -19,26 +19,23 @@ public class AddressDAO extends DAO {
         }
     }
 
-    public List<Endereco> getForClient(int id) {
-        return session.createCriteria(Endereco.class).add(Restrictions.eq("cliente.id", id)).list();
+    public List<Address> getForClient(int id) {
+        return session.createCriteria(Address.class).add(Restrictions.eq("client.idClient", id)).list();
     }
 
-    public Endereco get(int id) {
-        return (Endereco) session.get(Endereco.class, id);
+    public Address get(int id) {
+        return (Address) session.get(Address.class, id);
     }
 
-    public void put(Endereco address, AddressDTO addressDTO) {
+    public void put(Address address, AddressDTO addressDTO) {
         try {
             Transaction transaction = session.beginTransaction();
 
-            address.setNomeEndereco(addressDTO.name);
-            address.setLogradouroEndereco(addressDTO.publicPlace);
-            address.setNumeroEndereco(addressDTO.number);
-            address.setCependereco(addressDTO.CEP);
-            address.setComplementoEndereco(addressDTO.complement);
-            address.setCidadeEndereco(addressDTO.city);
-            address.setPaisEndereco(addressDTO.country);
-            address.setUfendereco(addressDTO.UF);
+            address.setNameAddress(addressDTO.name);
+            address.setNumberAddress(addressDTO.number);
+            address.setCEPAddress(addressDTO.CEP);
+            address.setCityAddress(addressDTO.city);
+            address.setCountryAddress(addressDTO.country);
 
             session.save(address);
             transaction.commit();
@@ -48,31 +45,25 @@ public class AddressDAO extends DAO {
         }
     }
 
-    public AddressDTO getAddressDTO(Endereco address) {
+    public AddressDTO getAddressDTO(Address address) {
         AddressDTO addressDTO = new AddressDTO();
-        addressDTO.idClient = address.getCliente().getIdCliente();
-        addressDTO.name = address.getNomeEndereco();
-        addressDTO.publicPlace = address.getLogradouroEndereco();
-        addressDTO.number = address.getNumeroEndereco();
-        addressDTO.CEP = address.getCependereco();
-        addressDTO.complement = address.getComplementoEndereco();
-        addressDTO.city = address.getCidadeEndereco();
-        addressDTO.country = address.getPaisEndereco();
-        addressDTO.UF = address.getUfendereco();
-        return addressDTO;
+        addressDTO.idClient = address.getClient().getIdClient();
+        addressDTO.name = address.getNameAddress();
+        addressDTO.number = address.getNumberAddress();
+        addressDTO.CEP = address.getCEPAddress();
+        addressDTO.city = address.getCityAddress();
+        addressDTO.country = address.getCountryAddress();
+            return addressDTO;
     }
 
-    public Endereco getAddress(AddressDTO addressDTO) {
-        Endereco address = new Endereco();
-        address.setCliente(new ClientDAO().get(addressDTO.idClient));
-        address.setNomeEndereco(addressDTO.name);
-        address.setLogradouroEndereco(addressDTO.publicPlace);
-        address.setNumeroEndereco(addressDTO.number);
-        address.setCependereco(addressDTO.CEP);
-        address.setComplementoEndereco(addressDTO.complement);
-        address.setCidadeEndereco(addressDTO.city);
-        address.setPaisEndereco(addressDTO.country);
-        address.setUfendereco(addressDTO.UF);
+    public Address getAddress(AddressDTO addressDTO) {
+        Address address = new Address();
+        address.setClient(new ClientDAO().get(addressDTO.idClient));
+        address.setNameAddress(addressDTO.name);
+        address.setNumberAddress(addressDTO.number);
+        address.setCEPAddress(addressDTO.CEP);
+        address.setCityAddress(addressDTO.city);
+        address.setCountryAddress(addressDTO.country);
         return address;
     }
 

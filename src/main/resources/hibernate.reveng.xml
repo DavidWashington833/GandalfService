@@ -41,15 +41,14 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="gandalf" match-schema="dbo"/>
-  <table-filter match-name="estoque"/>
-  <table-filter match-name="Pedido"/>
-  <table-filter match-name="Produto"/>
-  <table-filter match-name="TipoPagamento"/>
-  <table-filter match-name="Cliente"/>
-  <table-filter match-name="Categoria"/>
-  <table-filter match-name="ItemPedido"/>
-  <table-filter match-name="Usuario"/>
-  <table-filter match-name="Endereco"/>
-  <table-filter match-name="Aplicacao"/>
-  <table-filter match-name="StatusPedido"/>
+  <table-filter match-name="Request"/>
+  <table-filter match-name="Product"/>
+  <table-filter match-name="typePayment"/>
+  <table-filter match-name="Client"/>
+  <table-filter match-name="Category"/>
+  <table-filter match-name="ItemRequest"/>
+  <table-filter match-name="User"/>
+  <table-filter match-name="Address"/>
+  <table-filter match-name="Application"/>
+  <table-filter match-name="StatusRequest"/>
 </hibernate-reverse-engineering>

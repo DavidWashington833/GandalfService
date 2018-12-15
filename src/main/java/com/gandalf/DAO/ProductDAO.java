@@ -1,45 +1,45 @@
 package com.gandalf.DAO;
 
 import com.gandalf.DTO.ProductDTO;
-import com.gandalf.models.Produto;
+import com.gandalf.models.Product;
 import java.util.List;
 import org.hibernate.criterion.Restrictions;
 
 public class ProductDAO extends DAO {
 
-    public List<Produto> get() {
-        return session.createCriteria(Produto.class).list();
+    public List<Product> get() {
+        return session.createCriteria(Product.class).list();
     }
 
-    public Produto get(int id) {
-        return (Produto) session.get(Produto.class, id);
+    public Product get(int id) {
+        return (Product) session.get(Product.class, id);
     }
 
-    public List<Produto> getForCategoria(int id) {
+    public List<Product> getForCategoria(int id) {
         return session
-                .createCriteria(Produto.class)
-                .add(Restrictions.eq("categoria.id", id))
+                .createCriteria(Product.class)
+                .add(Restrictions.eq("category.id", id))
                 .list();
     }
 
-    public List<Produto> like(String nomeProduto) {
+    public List<Product> like(String nomeProduto) {
         return session
-                .createCriteria(Produto.class)
+                .createCriteria(Product.class)
                 .add(Restrictions
-                        .like("nomeProduto", "%" + nomeProduto + "%"))
+                        .like("nameProduct", "%" + nomeProduto + "%"))
                 .list();
     }
 
-    public ProductDTO getProductDTO(Produto product) {
+    public ProductDTO getProductDTO(Product product) {
         ProductDTO productDTO = new ProductDTO();
-        productDTO.id = product.getIdProduto();
-        productDTO.name = product.getNomeProduto();
-        productDTO.price = product.getPrecProduto();
-        productDTO.discount = product.getDescontoPromocao();
-        productDTO.stock = product.getQtdMinEstoque();
-        productDTO.description = product.getDescProduto();
-        productDTO.active = product.getAtivoProduto();
-        productDTO.image = product.getImagem();
+        productDTO.id = product.getIdProduct();
+        productDTO.name = product.getNameProduct();
+        productDTO.price = product.getPriceProduct();
+        productDTO.discount = product.getDiscountProduct();
+        productDTO.stock = product.getStockProduct();
+        productDTO.description = product.getDescriptionProduct();
+        productDTO.active = product.getActiveProduct();
+        productDTO.image = product.getImageProduct();
         return productDTO;
     }
 }

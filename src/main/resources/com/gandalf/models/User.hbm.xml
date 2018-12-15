@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/10/2017 20:49:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="Gandalf" name="com.gandalf.models.User" optimistic-lock="version" schema="dbo" table="User">
+    <id name="idUser" type="int">
+      <column name="idUser"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="emailUser" type="string">
+      <column length="100" name="emailUser" not-null="true"/>
+    </property>
+    <property name="passwordUser" type="string">
+      <column length="64" name="passwordUser"/>
+    </property>
+    <property name="nameUser" type="string">
+      <column length="50" name="nameUser"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="products" table="Product">
+      <key>
+        <column name="idUser"/>
+      </key>
+      <one-to-many class="com.gandalf.models.Product"/>
+    </set>
+  </class>
+</hibernate-mapping>
